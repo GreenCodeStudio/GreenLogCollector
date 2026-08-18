@@ -1,0 +1,11 @@
+<div class="topBarButtons">
+    <a href="/VisitLog/add" class="button action-add"><span class="icon-add"></span> {{t("CommonBase.add")}}</a>
+</div>
+<div class="grid page-VisitLog  page-VisitLog-list">
+    <section class="card action-view" data-width="6">
+        <header>
+            <h1>{{t("VisitLog.VisitLogList.header")}}</h1>
+        </header>
+        <div class="container"></div>
+    </section>
+</div>

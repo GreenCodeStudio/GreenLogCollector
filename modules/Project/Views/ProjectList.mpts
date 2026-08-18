@@ -1,0 +1,11 @@
+<div class="topBarButtons">
+    <a href="/Project/add" class="button action-add"><span class="icon-add"></span> {{t("CommonBase.add")}}</a>
+</div>
+<div class="grid page-Project  page-Project-list">
+    <section class="card action-view" data-width="6">
+        <header>
+            <h1>{{t("Project.ProjectList.header")}}</h1>
+        </header>
+        <div class="container"></div>
+    </section>
+</div>

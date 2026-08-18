@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root><node name="Project"><node name="Project"><value lang="en">Project</value></node><node name="id"><value lang="en">id</value></node><node name="name"><value lang="en">name</value></node></node><node name="ProjectList"><node name="header"><value lang="en">List of elements of type Project</value></node></node></root>

@@ -1,0 +1,42 @@
+<form>
+    <div class="topBarButtons">
+        <a href="/VisitLog/" class="button"><span class="icon-cancel"></span>{{t("CommonBase.cancel")}}</a>
+        <button class=("button action-":type)><span class="icon-save"></span>{{t("CommonBase.save")}}</button>
+    </div>
+    <div class="grid page-VisitLog page-VisitLog-edit">
+        <input name="id" type="hidden" />
+        <section class=("card action-":type) data-width="6">
+            <header>
+                <h1>{{t("VisitLog.VisitLog.VisitLog")}}</h1>
+            </header>
+          <label>
+            <span>{{t("VisitLog.VisitLog.project_id")}}</span>
+            <select data-foreign-key="project" name="project_id"  > </select>
+        </label><label>
+            <span>{{t("VisitLog.VisitLog.userIdentifier")}}</span>
+            <input type="text" name="userIdentifier"  />
+        </label><label>
+            <span>{{t("VisitLog.VisitLog.userAgent")}}</span>
+            <input type="text" name="userAgent"  />
+        </label><label>
+            <span>{{t("VisitLog.VisitLog.ipAddress")}}</span>
+            <input type="text" name="ipAddress"  />
+        </label><label>
+            <span>{{t("VisitLog.VisitLog.sessionIdentifier")}}</span>
+            <input type="text" name="sessionIdentifier"  />
+        </label><label>
+            <span>{{t("VisitLog.VisitLog.pageOpenIdentifier")}}</span>
+            <input type="text" name="pageOpenIdentifier"  />
+        </label><label>
+            <span>{{t("VisitLog.VisitLog.url")}}</span>
+            <input type="text" name="url"  />
+        </label><label>
+            <span>{{t("VisitLog.VisitLog.added")}}</span>
+            <input type="datetime-local" step="any" name="added" required />
+        </label><label>
+            <span>{{t("VisitLog.VisitLog.type")}}</span>
+            <input type="text" name="type"  />
+        </label>
+        </section>
+    </div>
+</form>

@@ -1,0 +1,41 @@
+<form>
+    <div class="topBarButtons">
+        <a href=("/VisitLog/edit/":item.id) class="button action-edit"><span class="icon-edit"></span>{{t("CommonBase.edit")}}</a>
+    </div>
+    <div class="grid page-VisitLog page-VisitLog-show">
+        <input name="id" type="hidden" />
+        <section class=("card action-":type) data-width="6">
+            <header>
+                <h1>{{t("VisitLog.VisitLog.VisitLog")}}</h1>
+            </header>
+          <div class="pseudoLabel">
+            <span>{{t("VisitLog.VisitLog.project_id")}}:</span>
+            <strong>{{item.project_id}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("VisitLog.VisitLog.userIdentifier")}}:</span>
+            <strong>{{item.userIdentifier}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("VisitLog.VisitLog.userAgent")}}:</span>
+            <strong>{{item.userAgent}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("VisitLog.VisitLog.ipAddress")}}:</span>
+            <strong>{{item.ipAddress}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("VisitLog.VisitLog.sessionIdentifier")}}:</span>
+            <strong>{{item.sessionIdentifier}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("VisitLog.VisitLog.pageOpenIdentifier")}}:</span>
+            <strong>{{item.pageOpenIdentifier}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("VisitLog.VisitLog.url")}}:</span>
+            <strong>{{item.url}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("VisitLog.VisitLog.added")}}:</span>
+            <strong>{{item.added}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("VisitLog.VisitLog.type")}}:</span>
+            <strong>{{item.type}}</strong>
+        </div>
+        </section>
+    </div>
+</form>
