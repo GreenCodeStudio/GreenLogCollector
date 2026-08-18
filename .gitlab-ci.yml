@@ -1,0 +1,92 @@
+image: matrix0123456789/selenium:latest
+
+before_script:
+  - git submodule sync --recursive
+  - git submodule update --init --recursive
+  - mkdir cache
+  - chmod 777 cache
+  - cat .env
+
+staticAnalysis:
+  rules:
+    - when: manual
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+    PHP_EXTENSION_GD: 1
+  script:
+    - composer upgrade
+    - composer upgrade
+    - pwsh -Command ". ./script; Run-PhpStan"
+
+
+unitTests:
+  rules:
+    - when: manual
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+    PHP_EXTENSION_GD: 1
+  script:
+    - composer upgrade
+    - composer upgrade
+    - pwsh -Command ". ./script; Prepare-Build"
+    - pwsh -Command ". ./script; Run-UnitTests"
+
+e2eTests:
+  rules:
+    - when: manual
+  services:
+    - rabbitmq:latest
+    - mysql:latest
+    - redis:latest
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+    PHP_EXTENSION_GD: 1
+    DISPLAY: ":1"
+    RABBITMQ_DEFAULT_USER: guest
+    RABBITMQ_DEFAULT_PASS: guest
+    AMQP_URL: 'amqp://guest:guest@rabbitmq:5672'
+    MYSQL_DATABASE: test
+    MYSQL_ROOT_PASSWORD: test
+  script:
+    - echo db='mysql:dbname=test;host=mysql' > .env
+    - echo dbUser=root >> .env
+    - echo dbPass=test >> .env
+    - echo dbDialect=mysql >> .env
+    - echo cached_code=0 >> .env
+    - echo dbSchema=test >> .env
+    - echo debug=1 >> .env
+    - echo redis=redis >> .env
+    - echo rabbitmq_server=rabbitmq >> .env
+    - mkdir screens/additional -p
+    - sudo Xvfb :1 > /dev/null 2>&1 &
+    - export DISPLAY=:1
+    - pwsh -Command ". ./script; Run-E2ETests"
+
+  artifacts:
+    paths: ['tmp']
+    expire_in: 1 week
+    when: always
+
+deployment:
+  rules:
+    - when: manual
+  variables:
+
+    project: "greenlogcollector"
+  script:
+    - echo "VERSION = $CI_COMMIT_SHA" > .env.version
+    - composer upgrade -n --ignore-platform-reqs
+    - composer upgrade -n --ignore-platform-reqs
+    - yarn
+    - pwsh -Command ". ./script; Build-Project -production"
+    - rm -rf node_modules
+    - file="${CI_COMMIT_SHA}.zip"
+    - zip --symlinks -r $file .
+    - aws s3 cp $file $s3path
+    - echo $CI_COMMIT_SHA > lastVersion
+    - aws s3 cp lastVersion $s3path
+  artifacts:
+    paths: [ '*' ]
+    expire_in: 1 hour
+    when: always
+

@@ -1,0 +1,5 @@
+{
+    "packages":  {
+                     "Core":  "https://gitlab.com/MateuszKrawczyk/framework_core.git"
+                 }
+}
