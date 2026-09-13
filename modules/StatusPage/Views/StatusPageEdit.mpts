@@ -1,0 +1,15 @@
+<form>
+    <div class="topBarButtons">
+        <a href="/StatusPage/" class="button"><span class="icon-cancel"></span>{{t("CommonBase.cancel")}}</a>
+        <button class=("button action-":type)><span class="icon-save"></span>{{t("CommonBase.save")}}</button>
+    </div>
+    <div class="grid page-StatusPage page-StatusPage-edit">
+        <input name="id" type="hidden" />
+        <section class=("card action-":type) data-width="6">
+            <header>
+                <h1>{{t("StatusPage.StatusPage.StatusPage")}}</h1>
+            </header>
+          
+        </section>
+    </div>
+</form>

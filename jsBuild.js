@@ -7,6 +7,7 @@ import  "./modules/ExternalApplication/js/index";
 import  "./modules/Monitor/js/index";
 import  "./modules/Project/js/index";
 import  "./modules/Search/js/index";
+import  "./modules/StatusPage/js/index";
 import  "./modules/User/js/index";
 import  "./modules/VisitLog/js/index";
 

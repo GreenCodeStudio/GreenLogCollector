@@ -1,0 +1,7 @@
+<h1>{{item.name}}</h1>
+<:foreach collection=item.monitors item=monitor>
+<section class="monitorCondensed" data-status=(monitor.last.isSuccess??0) >
+    <h2>{{monitor.name}}</h2>
+
+</section>
+</:foreach>

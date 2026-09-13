@@ -68,11 +68,15 @@ class Monitor extends \Core\BussinesLogic
     public function checkMonitor($monitor)
     {
         $resultRepository = new MonitorResultRepository();
-        $start = microtime(true);
-        $startDate = date('Y-m-d H:i:s');
-        $result = CheckFactory::getChecker($monitor->type)->check($monitor->address);
-        $end = microtime(true);
-        dump($result);
+        $result = null;
+        for ($i = 0; $i < 3; $i++) {
+            $start = microtime(true);
+            $startDate = date('Y-m-d H:i:s');
+            $result = CheckFactory::getChecker($monitor->type)->check($monitor->address);
+            $end = microtime(true);
+            if ($result['isSuccess'])
+                break;
+        }
         $resultRepository->insert([
             'monitor_id' => $monitor->id,
             'isSuccess' => $result['isSuccess'],

@@ -10,6 +10,8 @@ class CheckFactory
             return new PingCheck();
         } else if ($type == "http") {
             return new HttpCheck();
+        } else if ($type == "tcp") {
+            return new TcpCheck();
         } else {
             return null;
         }

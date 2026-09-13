@@ -1,0 +1,26 @@
+<?php
+
+namespace StatusPage\Controllers;
+
+use Core\Exceptions\NotFoundException;
+use StatusPage\StatusPage;
+
+class PublicController extends \Common\PageStandardController
+{
+    public function index($code)
+    {
+        $statusPage = (new StatusPage())->getForPublicView($code);
+        if ($statusPage == null)
+            throw new NotFoundException();
+        $this->addView('StatusPage', 'PublicStatusPage', ['item' => $statusPage]);
+    }
+    public function hasPermission(string $methodName)
+    {
+        return true;
+    }
+    public function postAction()
+    {
+        require __DIR__.'/../Views/publicTemplate.php';
+
+    }
+}

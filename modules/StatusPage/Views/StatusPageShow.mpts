@@ -1,0 +1,14 @@
+<form>
+    <div class="topBarButtons">
+        <a href=("/StatusPage/edit/":item.id) class="button action-edit"><span class="icon-edit"></span>{{t("CommonBase.edit")}}</a>
+    </div>
+    <div class="grid page-StatusPage page-StatusPage-show">
+        <input name="id" type="hidden" />
+        <section class=("card action-":type) data-width="6">
+            <header>
+                <h1>{{t("StatusPage.StatusPage.StatusPage")}}</h1>
+            </header>
+          
+        </section>
+    </div>
+</form>
