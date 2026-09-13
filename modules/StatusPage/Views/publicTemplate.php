@@ -4,7 +4,7 @@ use Core\Formatter;
 
 ?>
 <!DOCTYPE html>
-<html data-layout="<?=($userPreferences["CommonBase.layout"])??'metro'?>">
+<html lang="<?=t('StatusPage.lang')?>">
 <head>
     <title><?= htmlspecialchars($this->getTitle()) ?></title>
     <meta charset="UTF-8">
@@ -13,7 +13,9 @@ use Core\Formatter;
     <link rel="shortcut icon" href="/dist/Common/icon.png">
     <link rel="icon" sizes="192x192" href="/dist/Common/icon192.png">
     <link rel="stylesheet" href="/dist/StatusPage/public.css">
-    <meta name="theme-color" content="#d7ee1b">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#d7ee1b" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111917" media="(prefers-color-scheme: dark)">
     <?php foreach ($this->getHeadLinks() ?? [] as $link){
         echo '<link ';
         foreach ($link as $key=>$value){

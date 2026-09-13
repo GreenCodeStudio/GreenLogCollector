@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<root></root>
+<root>
+    <node name="lang">
+        <value lang="pl">pl</value>
+        <value lang="en">en</value>
+        <value lang="de">de</value>
+    </node>
+</root>
