@@ -4,6 +4,8 @@ namespace Monitor\Controllers;
 
 use Authorization\Permissions;
 use Core\Exceptions\NotFoundException;
+use Core\Formatter;
+
 class MonitorController extends \Common\PageStandardController
 {
 
@@ -53,7 +55,7 @@ class MonitorController extends \Common\PageStandardController
         $Monitor = new \Monitor\Monitor();
         return ['selects' => $Monitor->getSelects()];
     }
-    
+
         /**
      * @param int $id
      */
@@ -61,11 +63,12 @@ class MonitorController extends \Common\PageStandardController
     {
         $this->will('Monitor', 'show');
                 $Monitor = new \Monitor\Monitor();
-        $data = $Monitor->getById($id);
+        $data = $Monitor->getToShow($id);
         if ($data == null)
             throw new NotFoundException();
-            
-        $this->addView('Monitor', 'MonitorShow', ['item' => $data]);
+        dump($data);
+
+        $this->addView('Monitor', 'MonitorShow', ['item' => $data, 'formatSeconds'=>fn($x)=>Formatter::formatSeconds($x), 'formatDate'=>fn($x)=>Formatter::formatDate($x)]);
         $this->pushBreadcrumb(['title' => 'Monitor', 'url' => '/Monitor']);
         $this->pushBreadcrumb(['title' => 'Szczegóły', 'url' => '/Monitor/show/'.$id]);
     }

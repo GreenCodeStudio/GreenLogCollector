@@ -1,26 +1,57 @@
-<form>
-    <div class="topBarButtons">
-        <a href=("/Monitor/edit/":item.id) class="button action-edit"><span class="icon-edit"></span>{{t("CommonBase.edit")}}</a>
-    </div>
-    <div class="grid page-Monitor page-Monitor-show">
-        <input name="id" type="hidden" />
-        <section class=("card action-":type) data-width="6">
-            <header>
-                <h1>{{t("Monitor.Monitor.Monitor")}}</h1>
-            </header>
-          <div class="pseudoLabel">
-            <span>{{t("Monitor.Monitor.name")}}:</span>
-            <strong>{{item.name}}</strong>
-        </div><div class="pseudoLabel">
-            <span>{{t("Monitor.Monitor.address")}}:</span>
-            <strong>{{item.address}}</strong>
-        </div><div class="pseudoLabel">
-            <span>{{t("Monitor.Monitor.type")}}:</span>
-            <strong>{{item.type}}</strong>
-        </div><div class="pseudoLabel">
-            <span>{{t("Monitor.Monitor.project_id")}}:</span>
-            <strong>{{item.project_id}}</strong>
+<div class="topBarButtons">
+    <a href=("/Monitor/edit/":item.id) class="button action-edit" >
+    <span class="icon-edit"></span>
+    {{t("CommonBase.edit")}}
+</a>
         </div>
-        </section>
+<div class="grid page-Monitor page-Monitor-show">
+<input name="id" type="hidden"/>
+<section class="card action-show" data-width="6">
+    <header>
+        <h1>{{t("Monitor.Monitor.Monitor")}}</h1>
+    </header>
+    <div class="pseudoLabel">
+        <span>{{t("Monitor.Monitor.name")}}:</span>
+        <strong>{{item.name}}</strong>
     </div>
-</form>
+    <div class="pseudoLabel">
+        <span>{{t("Monitor.Monitor.address")}}:</span>
+        <strong>{{item.address}}</strong>
+    </div>
+    <div class="pseudoLabel">
+        <span>{{t("Monitor.Monitor.type")}}:</span>
+        <strong>{{item.type}}</strong>
+    </div>
+</section>
+</div>
+
+<section class="card action-show" data-width="6">
+<header>
+    <h1>{{t("Monitor.Monitor.lastStatus")}}</h1>
+</header>
+<div class="pseudoLabel">
+    <span>{{t("Monitor.MonitorResult.stamp")}}:</span>
+    <strong>{{formatDate(item.last.stamp)}}</strong>
+</div>
+<div class="pseudoLabel">
+    <span>{{t("Monitor.MonitorResult.isSuccess")}}:</span>
+    <strong>{{item.last.isSuccess}}</strong>
+</div>
+<div class="pseudoLabel">
+    <span>{{t("Monitor.MonitorResult.responseTime")}}:</span>
+    <strong>{{formatSeconds(item.last.responseTime)}}</strong>
+</div>
+</section>
+<section class="card action-show" data-width="6">
+<header>
+    <h1>{{t("Monitor.Monitor.total")}}</h1>
+</header>
+<div class="pseudoLabel">
+    <span>{{t("Monitor.MonitorResult.percent")}}:</span>
+    <strong>{{item.total.success}}/{{item.total.all}}</strong>
+</div>
+<div class="pseudoLabel">
+    <span>{{t("Monitor.MonitorResult.time")}}:</span>
+    <strong>{{formatSeconds(item.total.minTime)}}/{{formatSeconds(item.total.avgTime)}}/{{formatSeconds(item.total.maxTime)}}</strong>
+</div>
+</section>

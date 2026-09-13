@@ -14,25 +14,28 @@ export class index {
         let objectsList = new ObjectsList(datasource);
         objectsList.allowTableEdit = true;
         objectsList.columns = [];
-                objectsList.columns.push({
+        objectsList.columns.push({
             name: t('Monitor.name'),
             dataName: 'name',
             sortName: 'name',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('Monitor.address'),
             dataName: 'address',
             sortName: 'address',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('Monitor.type'),
             dataName: 'type',
             sortName: 'type',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('Monitor.project_id'),
             dataName: 'project_id',
             sortName: 'project_id',
@@ -42,12 +45,22 @@ export class index {
         objectsList.generateActions = (rows, mode) => {
             let ret = [];
             if (rows.length == 1) {
+                if (Permissions.can('Monitor', 'show')) {
+                    ret.push({
+                        name: TCommonBase("show"),
+                        icon: 'icon-show',
+                        href: "/Monitor/show/" + rows[0].id,
+                        action: "show"
+                    });
+                }
+            }
+            if (rows.length == 1) {
                 if (Permissions.can('Monitor', 'edit')) {
                     ret.push({
                         name: TCommonBase("edit"),
                         icon: 'icon-edit',
                         href: "/Monitor/edit/" + rows[0].id,
-                        action:"edit"
+                        action: "edit"
                     });
                 }
             }
@@ -57,6 +70,7 @@ export class index {
         objectsList.refresh();
     }
 }
+
 export class edit {
     constructor(page, data) {
         let form = new FormManager(page.querySelector('form'));
@@ -69,10 +83,11 @@ export class edit {
         }
     }
 }
+
 export class add {
     constructor(page, data) {
         let form = new FormManager(page.querySelector('form'));
-        if(data && data.selects)
+        if (data && data.selects)
             form.loadSelects(data.selects);
 
         form.submit = async newData => {

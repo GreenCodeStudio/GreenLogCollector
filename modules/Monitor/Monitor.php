@@ -77,4 +77,9 @@ class Monitor extends \Core\BussinesLogic
             ]);
         }
     }
+
+    public function getToShow(int $id)
+    {
+        return $this->defaultDB->getToShow($id);
+    }
 }

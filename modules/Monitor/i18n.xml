@@ -1,2 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<root><node name="Monitor"><node name="Monitor"><value lang="en">Monitor</value></node><node name="id"><value lang="en">id</value></node><node name="name"><value lang="en">name</value></node><node name="address"><value lang="en">address</value></node><node name="type"><value lang="en">type</value></node><node name="project_id"><value lang="en">project_id</value></node></node><node name="MonitorList"><node name="header"><value lang="en">List of elements of type Monitor</value></node></node><node name="MonitorResult"><node name="MonitorResult"><value lang="en">MonitorResult</value></node><node name="id"><value lang="en">id</value></node><node name="monitor_id"><value lang="en">monitor_id</value></node><node name="stamp"><value lang="en">stamp</value></node><node name="response_time"><value lang="en">response_time</value></node><node name="is_success"><value lang="en">is_success</value></node><node name="status"><value lang="en">status</value></node></node><node name="MonitorResultList"><node name="header"><value lang="en">List of elements of type MonitorResult</value></node></node></root>
+<root>
+    <node name="Monitor">
+        <node name="Monitor">
+            <value lang="pl">Monitor</value>
+            <value lang="en">Monitor</value>
+            <value lang="de">Monitor</value>
+        </node>
+        <node name="id">
+            <value lang="en">id</value>
+        </node>
+        <node name="name">
+            <value lang="pl">Nazwa</value>
+            <value lang="en">Name</value>
+            <value lang="de">Name</value>
+        </node>
+        <node name="address">
+            <value lang="pl">Adres</value>
+            <value lang="en">Address</value>
+            <value lang="de">Adresse</value>
+        </node>
+        <node name="type">
+            <value lang="pl">Typ</value>
+            <value lang="en">Type</value>
+            <value lang="de">Typ</value>
+        </node>
+        <node name="project_id">
+            <value lang="pl">ID projektu</value>
+            <value lang="en">Project ID</value>
+            <value lang="de">Projekt-ID</value>
+        </node>
+        <node name="lastStatus">
+            <value lang="pl">Ostatni status</value>
+            <value lang="en">Last Status</value>
+            <value lang="de">Letzter Status</value>
+        </node>
+        <node name="total">
+            <value lang="pl">Podsumowanie</value>
+            <value lang="en">Total</value>
+            <value lang="de">Gesamt</value>
+        </node>
+    </node>
+    <node name="MonitorList">
+        <node name="header">
+            <value lang="pl">Lista aktywnych monitoringów</value>
+            <value lang="en">List of active monitors</value>
+            <value lang="de">Liste der aktiven Monitore</value>
+        </node>
+    </node>
+    <node name="MonitorResult">
+        <node name="MonitorResult">
+            <value lang="en">MonitorResult</value>
+        </node>
+        <node name="id">
+            <value lang="en">id</value>
+        </node>
+        <node name="monitor_id">
+            <value lang="en">monitor_id</value>
+        </node>
+        <node name="stamp">
+            <value lang="pl">Data i czas</value>
+            <value lang="en">Date time</value>
+            <value lang="de">Datum und Uhrzeit</value>
+        </node>
+        <node name="responseTime">
+            <value lang="pl">Czas odpowiedzi</value>
+            <value lang="en">Response time</value>
+            <value lang="de">Antwortzeit</value>
+        </node>
+        <node name="isSuccess">
+            <value lang="pl">Sukces</value>
+            <value lang="en">Is success</value>
+            <value lang="de">Erfolg</value>
+        </node>
+        <node name="status">
+            <value lang="pl">Status</value>
+            <value lang="en">Status</value>
+            <value lang="de">Status</value>
+        </node>
+        <node name="percent">
+            <value lang="pl">Procent</value>
+            <value lang="en">Percent</value>
+            <value lang="de">Prozent</value>
+        </node>
+    <node name="time">
+        <value lang="pl">Czas (min/śr/max)</value>
+        <value lang="en">Time (min/avg/max)</value>
+        <value lang="de">Zeit (min/durchschn./max)</value>
+    </node>
+    </node>
+    <node name="MonitorResultList">
+        <node name="header">
+            <value lang="en">List of elements of type MonitorResult</value>
+        </node>
+    </node>
+</root>
