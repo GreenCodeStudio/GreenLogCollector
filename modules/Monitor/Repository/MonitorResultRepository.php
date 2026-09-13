@@ -31,7 +31,7 @@ class MonitorResultRepository extends \Core\Repository
         if (empty($options->sort))
             return "";
         else {
-            $mapping = ['monitor_id'=> 'monitor_id', 'stamp'=> 'stamp', 'response_time'=> 'response_time', 'is_success'=> 'is_success', 'status'=> 'status'];
+            $mapping = ['monitor_id'=> 'monitor_id', 'stamp'=> 'stamp', 'responseTime'=> 'responseTime', 'isSuccess'=> 'isSuccess', 'status'=> 'status'];
             if (empty($mapping[$options->sort->col]))
                 throw new Exception();
             return ' ORDER BY '.DB::safeKey($mapping[$options->sort->col]).' '.($options->sort->desc ? 'DESC' : 'ASC').' ';

@@ -27,8 +27,8 @@ class MonitorResult extends \Core\BussinesLogic
         $ret = [];
         $ret['monitor_id'] = $data->monitor_id;
 $ret['stamp'] = $data->stamp;
-$ret['response_time'] = empty($data->response_time)?null:$data->response_time;
-$ret['is_success'] = empty($data->is_success)?null:$data->is_success;
+$ret['responseTime'] = empty($data->responseTime)?null:$data->responseTime;
+$ret['isSuccess'] = empty($data->isSuccess)?null:$data->isSuccess;
 $ret['status'] = empty($data->status)?null:$data->status;
 
         return $ret;

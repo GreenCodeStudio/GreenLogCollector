@@ -27,15 +27,15 @@ export class index {
             width: 100,
             widthGrow: 1
         });        objectsList.columns.push({
-            name: t('MonitorResult.response_time'),
-            dataName: 'response_time',
-            sortName: 'response_time',
+            name: t('MonitorResult.responseTime'),
+            dataName: 'responseTime',
+            sortName: 'responseTime',
             width: 100,
             widthGrow: 1
         });        objectsList.columns.push({
-            name: t('MonitorResult.is_success'),
-            dataName: 'is_success',
-            sortName: 'is_success',
+            name: t('MonitorResult.isSuccess'),
+            dataName: 'isSuccess',
+            sortName: 'isSuccess',
             width: 100,
             widthGrow: 1
         });        objectsList.columns.push({

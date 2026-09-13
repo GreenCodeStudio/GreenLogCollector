@@ -36,9 +36,9 @@ export class index {
             widthGrow: 1
         });
         objectsList.columns.push({
-            name: t('Monitor.project_id'),
-            dataName: 'project_id',
-            sortName: 'project_id',
+            name: t('MonitorResult.isSuccess'),
+            dataName: 'isSuccess',
+            sortName: 'isSuccess',
             width: 100,
             widthGrow: 1
         });

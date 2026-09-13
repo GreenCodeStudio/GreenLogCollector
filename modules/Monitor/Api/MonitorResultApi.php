@@ -43,12 +43,12 @@ class MonitorResultApi extends \Core\ApiController
  *                   'type' => 'datetime',
  *                   'format' => 'date-time',
  *                 ),
- *                 'response_time' => 
+ *                 'responseTime' => 
  *                 array (
  *                   'type' => 'float',
  *                   'format' => NULL,
  *                 ),
- *                 'is_success' => 
+ *                 'isSuccess' => 
  *                 array (
  *                   'type' => 'tinyint(1)',
  *                   'format' => NULL,
@@ -120,12 +120,12 @@ class MonitorResultApi extends \Core\ApiController
  *                 'type' => 'datetime',
  *                 'format' => 'date-time',
  *               ),
- *               'response_time' => 
+ *               'responseTime' => 
  *               array (
  *                 'type' => 'float',
  *                 'format' => NULL,
  *               ),
- *               'is_success' => 
+ *               'isSuccess' => 
  *               array (
  *                 'type' => 'tinyint(1)',
  *                 'format' => NULL,
@@ -184,12 +184,12 @@ class MonitorResultApi extends \Core\ApiController
  *               'type' => 'datetime',
  *               'format' => 'date-time',
  *             ),
- *             'response_time' => 
+ *             'responseTime' => 
  *             array (
  *               'type' => 'float',
  *               'format' => NULL,
  *             ),
- *             'is_success' => 
+ *             'isSuccess' => 
  *             array (
  *               'type' => 'tinyint(1)',
  *               'format' => NULL,
@@ -232,12 +232,12 @@ class MonitorResultApi extends \Core\ApiController
  *                 'type' => 'datetime',
  *                 'format' => 'date-time',
  *               ),
- *               'response_time' => 
+ *               'responseTime' => 
  *               array (
  *                 'type' => 'float',
  *                 'format' => NULL,
  *               ),
- *               'is_success' => 
+ *               'isSuccess' => 
  *               array (
  *                 'type' => 'tinyint(1)',
  *                 'format' => NULL,
@@ -307,12 +307,12 @@ class MonitorResultApi extends \Core\ApiController
  *               'type' => 'datetime',
  *               'format' => 'date-time',
  *             ),
- *             'response_time' => 
+ *             'responseTime' => 
  *             array (
  *               'type' => 'float',
  *               'format' => NULL,
  *             ),
- *             'is_success' => 
+ *             'isSuccess' => 
  *             array (
  *               'type' => 'tinyint(1)',
  *               'format' => NULL,
@@ -355,12 +355,12 @@ class MonitorResultApi extends \Core\ApiController
  *                 'type' => 'datetime',
  *                 'format' => 'date-time',
  *               ),
- *               'response_time' => 
+ *               'responseTime' => 
  *               array (
  *                 'type' => 'float',
  *                 'format' => NULL,
  *               ),
- *               'is_success' => 
+ *               'isSuccess' => 
  *               array (
  *                 'type' => 'tinyint(1)',
  *                 'format' => NULL,

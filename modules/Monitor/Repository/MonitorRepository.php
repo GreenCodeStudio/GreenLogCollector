@@ -24,7 +24,7 @@ class MonitorRepository extends \Core\Repository
         $start = (int)$options->start;
         $limit = (int)$options->limit;
         $sqlOrder = $this->getOrderSQL($options);
-        $rows = DB::get("SELECT * FROM monitor $sqlOrder LIMIT $start,$limit");
+        $rows = DB::get("SELECT m.*, (SELECT isSuccess FROM monitor_result mr WHERE mr.monitor_id = m.id ORDER BY stamp DESC LIMIT 1) as isSuccess FROM monitor m $sqlOrder LIMIT $start,$limit");
         $total = DB::get("SELECT count(*) as count FROM monitor")[0]->count;
         return ['rows' => $rows, 'total' => $total];
     }
@@ -53,10 +53,10 @@ class MonitorRepository extends \Core\Repository
     {
         $item = DB::get("
 SELECT m.*,
-       (SELECT JSON_OBJECT('stamp', mr.stamp, 'responseTime', mr.response_time, 'isSuccess', mr.is_success, 'status', mr.status) FROM monitor_result mr WHERE mr.monitor_id = m.id ORDER BY stamp DESC LIMIT 1) AS last,
-       (SELECT JSON_OBJECT('all', count(*), 'success', sum(mr.is_success), 'minTime', min(if(mr.is_success, mr.response_time, null)), 'maxTime', max(if(mr.is_success, mr.response_time, null)), 'avgTime', avg(if(mr.is_success, mr.response_time, null))) FROM monitor_result mr WHERE mr.monitor_id = m.id AND mr.stamp > SUBDATE(NOW(), INTERVAL 1 WEEK)) AS week,
-       (SELECT JSON_OBJECT('all', count(*), 'success', sum(mr.is_success), 'minTime', min(if(mr.is_success, mr.response_time, null)), 'maxTime', max(if(mr.is_success, mr.response_time, null)), 'avgTime', avg(if(mr.is_success, mr.response_time, null))) FROM monitor_result mr WHERE mr.monitor_id = m.id AND mr.stamp > SUBDATE(NOW(), INTERVAL 1 YEAR)) AS `year`,
-       (SELECT JSON_OBJECT('all', count(*), 'success', sum(mr.is_success), 'minTime', min(if(mr.is_success, mr.response_time, null)), 'maxTime', max(if(mr.is_success, mr.response_time, null)), 'avgTime', avg(if(mr.is_success, mr.response_time, null))) FROM monitor_result mr WHERE mr.monitor_id = m.id) AS total
+       (SELECT JSON_OBJECT('stamp', mr.stamp, 'responseTime', mr.responseTime, 'isSuccess', mr.isSuccess, 'status', mr.status) FROM monitor_result mr WHERE mr.monitor_id = m.id ORDER BY stamp DESC LIMIT 1) AS last,
+       (SELECT JSON_OBJECT('all', count(*), 'success', sum(mr.isSuccess), 'minTime', min(if(mr.isSuccess, mr.responseTime, null)), 'maxTime', max(if(mr.isSuccess, mr.responseTime, null)), 'avgTime', avg(if(mr.isSuccess, mr.responseTime, null))) FROM monitor_result mr WHERE mr.monitor_id = m.id AND mr.stamp > SUBDATE(NOW(), INTERVAL 1 WEEK)) AS week,
+       (SELECT JSON_OBJECT('all', count(*), 'success', sum(mr.isSuccess), 'minTime', min(if(mr.isSuccess, mr.responseTime, null)), 'maxTime', max(if(mr.isSuccess, mr.responseTime, null)), 'avgTime', avg(if(mr.isSuccess, mr.responseTime, null))) FROM monitor_result mr WHERE mr.monitor_id = m.id AND mr.stamp > SUBDATE(NOW(), INTERVAL 1 YEAR)) AS `year`,
+       (SELECT JSON_OBJECT('all', count(*), 'success', sum(mr.isSuccess), 'minTime', min(if(mr.isSuccess, mr.responseTime, null)), 'maxTime', max(if(mr.isSuccess, mr.responseTime, null)), 'avgTime', avg(if(mr.isSuccess, mr.responseTime, null))) FROM monitor_result mr WHERE mr.monitor_id = m.id) AS total
 FROM monitor m 
 WHERE m.id = ?
 ", [$id])[0] ?? null;

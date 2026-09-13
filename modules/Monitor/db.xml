@@ -68,12 +68,12 @@
             <null>NO</null>
         </column>
         <column>
-            <name>response_time</name>
+            <name>responseTime</name>
             <type>float</type>
             <null>YES</null>
         </column>
         <column>
-            <name>is_success</name>
+            <name>isSuccess</name>
             <type>tinyint(1)</type>
             <null>YES</null>
         </column>

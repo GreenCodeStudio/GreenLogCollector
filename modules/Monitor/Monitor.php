@@ -70,10 +70,10 @@ class Monitor extends \Core\BussinesLogic
             dump($result);
             $resultRepository->insert([
                 'monitor_id' => $monitor->id,
-                'is_success' => $result['isSuccess'],
+                'isSuccess' => $result['isSuccess'],
                 'status' => json_encode($result['status'] ?? null),
                 'stamp' => $startDate,
-                'response_time' => $end - $start,
+                'responseTime' => $end - $start,
             ]);
         }
     }

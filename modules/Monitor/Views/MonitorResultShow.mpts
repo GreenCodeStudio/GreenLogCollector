@@ -15,11 +15,11 @@
             <span>{{t("Monitor.MonitorResult.stamp")}}:</span>
             <strong>{{item.stamp}}</strong>
         </div><div class="pseudoLabel">
-            <span>{{t("Monitor.MonitorResult.response_time")}}:</span>
-            <strong>{{item.response_time}}</strong>
+            <span>{{t("Monitor.MonitorResult.responseTime")}}:</span>
+            <strong>{{item.responseTime}}</strong>
         </div><div class="pseudoLabel">
-            <span>{{t("Monitor.MonitorResult.is_success")}}:</span>
-            <strong>{{item.is_success}}</strong>
+            <span>{{t("Monitor.MonitorResult.isSuccess")}}:</span>
+            <strong>{{item.isSuccess}}</strong>
         </div><div class="pseudoLabel">
             <span>{{t("Monitor.MonitorResult.status")}}:</span>
             <strong>{{item.status}}</strong>

@@ -16,11 +16,11 @@
             <span>{{t("Monitor.MonitorResult.stamp")}}</span>
             <input type="datetime-local" step="any" name="stamp" required />
         </label><label>
-            <span>{{t("Monitor.MonitorResult.response_time")}}</span>
-            <input type="text" name="response_time"  />
+            <span>{{t("Monitor.MonitorResult.responseTime")}}</span>
+            <input type="text" name="responseTime"  />
         </label><label>
-            <span>{{t("Monitor.MonitorResult.is_success")}}</span>
-            <input type="text" name="is_success"  />
+            <span>{{t("Monitor.MonitorResult.isSuccess")}}</span>
+            <input type="text" name="isSuccess"  />
         </label><label>
             <span>{{t("Monitor.MonitorResult.status")}}</span>
             <input type="text" name="status"  />
