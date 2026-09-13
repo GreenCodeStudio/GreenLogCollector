@@ -29,6 +29,9 @@ use Core\Formatter;
 <div class="mainContent">
     <div data-views="main"><?php $this->showViews('main'); ?></div>
 </div>
+<footer>
+    Made by <a href="https://greenlogcollector.green-code.studio/">Green Log Collector</a>
+</footer>
 <script>
     //<![CDATA[
     window.controllerInitInfo = <?=json_encode($this->getInitInfo())?>;
