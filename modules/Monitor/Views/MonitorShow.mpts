@@ -35,27 +35,28 @@
 </div>
 <div class="pseudoLabel">
     <span>{{t("Monitor.MonitorResult.isSuccess")}}:</span>
-    <strong>{{item.last.isSuccess}}</strong>
+    <strong>{{item.last.isSuccess??null}}</strong>
 </div>
 <div class="pseudoLabel">
     <span>{{t("Monitor.MonitorResult.responseTime")}}:</span>
-    <strong>{{formatSeconds(item.last.responseTime)}}</strong>
+    <strong>{{formatSeconds(item.last.responseTime??null)}}</strong>
 </div>
 </section>
+<:if condition=item.week >
 <section class="card action-show" data-width="6">
 <header>
     <h1>{{t("Monitor.Monitor.week")}}</h1>
 </header>
 <div class="pseudoLabel">
     <span>{{t("Monitor.MonitorResult.percent")}}:</span>
-    <strong>{{item.week.success}}/{{item.week.all}}</strong>
+    <strong>{{item.week.success??0}}/{{item.week.all??0}}</strong>
 </div>
 <div class="pseudoLabel">
     <span>{{t("Monitor.MonitorResult.time")}}:</span>
-    <strong>{{formatSeconds(item.week.minTime)}}/{{formatSeconds(item.week.avgTime)}}/{{formatSeconds(item.week.maxTime)}}</strong>
+    <strong>{{formatSeconds(item.week.minTime??null)}}/{{formatSeconds(item.week.avgTime??null)}}/{{formatSeconds(item.week.maxTime??null)}}</strong>
 </div>
 </section>
-
+</:if>
 
 <section class="card action-show" data-width="6">
 <header>
@@ -63,11 +64,11 @@
 </header>
 <div class="pseudoLabel">
     <span>{{t("Monitor.MonitorResult.percent")}}:</span>
-    <strong>{{item.year.success}}/{{item.year.all}}</strong>
+    <strong>{{item.year.success??0}}/{{item.year.all??0}}</strong>
 </div>
 <div class="pseudoLabel">
     <span>{{t("Monitor.MonitorResult.time")}}:</span>
-    <strong>{{formatSeconds(item.year.minTime)}}/{{formatSeconds(item.year.avgTime)}}/{{formatSeconds(item.year.maxTime)}}</strong>
+    <strong>{{formatSeconds(item.year.minTime??null)}}/{{formatSeconds(item.year.avgTime??null)}}/{{formatSeconds(item.year.maxTime??null)}}</strong>
 </div>
 </section>
 
@@ -78,10 +79,10 @@
 </header>
 <div class="pseudoLabel">
     <span>{{t("Monitor.MonitorResult.percent")}}:</span>
-    <strong>{{item.total.success}}/{{item.total.all}}</strong>
+    <strong>{{item.total.success??0}}/{{item.total.all??0}}</strong>
 </div>
 <div class="pseudoLabel">
     <span>{{t("Monitor.MonitorResult.time")}}:</span>
-    <strong>{{formatSeconds(item.total.minTime)}}/{{formatSeconds(item.total.avgTime)}}/{{formatSeconds(item.total.maxTime)}}</strong>
+    <strong>{{formatSeconds(item.total.minTime??null)}}/{{formatSeconds(item.total.avgTime??null)}}/{{formatSeconds(item.total.maxTime??null)}}</strong>
 </div>
 </section>

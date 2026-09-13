@@ -31,7 +31,7 @@ class Monitor extends \Core\BussinesLogic
         $ret['name'] = empty($data->name) ? null : $data->name;
         $ret['address'] = empty($data->address) ? null : $data->address;
         $ret['type'] = $data->type;
-        $ret['project_id'] = empty($data->project_id) ? null : $data->project_id;
+        $ret['is_archived'] = 0;
 
         return $ret;
     }
@@ -42,6 +42,7 @@ class Monitor extends \Core\BussinesLogic
 
         $id = $this->defaultDB->insert($filtered);
         \Core\WebSocket\Sender::sendToUsers(["Monitor", "Monitor", "Insert", $id]);
+        $this->checkMonitor($this->defaultDB->getById($id));
         return $id;
     }
 
@@ -53,29 +54,32 @@ class Monitor extends \Core\BussinesLogic
     public function getSelects()
     {
         $ret = [];
-        $project = new Repository\projectRepository();
-        $ret["project"] = $project->getSelect();
         return $ret;
     }
 
     public function check()
     {
-        $resultRepository = new MonitorResultRepository();
         $monitors = $this->defaultDB->getAll();
         foreach ($monitors as $monitor) {
-            $start = microtime(true);
-            $startDate = date('Y-m-d H:i:s');
-            $result = CheckFactory::getChecker($monitor->type)->check($monitor->address);
-            $end = microtime(true);
-            dump($result);
-            $resultRepository->insert([
-                'monitor_id' => $monitor->id,
-                'isSuccess' => $result['isSuccess'],
-                'status' => json_encode($result['status'] ?? null),
-                'stamp' => $startDate,
-                'responseTime' => $end - $start,
-            ]);
+            $this->checkMonitor($monitor);
         }
+    }
+
+    public function checkMonitor($monitor)
+    {
+        $resultRepository = new MonitorResultRepository();
+        $start = microtime(true);
+        $startDate = date('Y-m-d H:i:s');
+        $result = CheckFactory::getChecker($monitor->type)->check($monitor->address);
+        $end = microtime(true);
+        dump($result);
+        $resultRepository->insert([
+            'monitor_id' => $monitor->id,
+            'isSuccess' => $result['isSuccess'],
+            'status' => json_encode($result['status'] ?? null),
+            'stamp' => $startDate,
+            'responseTime' => $end - $start,
+        ]);
     }
 
     public function getToShow(int $id)

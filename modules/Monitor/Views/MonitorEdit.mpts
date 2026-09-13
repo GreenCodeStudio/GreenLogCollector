@@ -9,19 +9,21 @@
             <header>
                 <h1>{{t("Monitor.Monitor.Monitor")}}</h1>
             </header>
-          <label>
-            <span>{{t("Monitor.Monitor.name")}}</span>
-            <input type="text" name="name"  />
-        </label><label>
-            <span>{{t("Monitor.Monitor.address")}}</span>
-            <input type="text" name="address"  />
-        </label><label>
-            <span>{{t("Monitor.Monitor.type")}}</span>
-            <input type="text" name="type" required />
-        </label><label>
-            <span>{{t("Monitor.Monitor.project_id")}}</span>
-            <select data-foreign-key="project" name="project_id"  > </select>
-        </label>
+            <label>
+                <span>{{t("Monitor.Monitor.name")}}</span>
+                <input type="text" name="name"  />
+            </label>
+            <label>
+                <span>{{t("Monitor.Monitor.type")}}</span>
+                <select name="type">
+                    <option value="http">HTTP</option>
+                    <option value="ping">Ping</option>
+                </select>
+            </label>
+            <label>
+                <span>{{t("Monitor.Monitor.address")}}</span>
+                <input type="text" name="address"  />
+            </label>
         </section>
     </div>
 </form>

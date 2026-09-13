@@ -45,7 +45,7 @@
             <value lang="de">Jahr</value>
         </node>
         <node name="total">
-            <value lang="pl">Podsumowanie</value>
+            <value lang="pl">Cały okres</value>
             <value lang="en">Total</value>
             <value lang="de">Gesamt</value>
         </node>
