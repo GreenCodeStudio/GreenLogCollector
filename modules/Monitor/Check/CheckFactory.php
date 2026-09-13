@@ -8,6 +8,8 @@ class CheckFactory
     {
         if ($type == "ping") {
             return new PingCheck();
+        } else if ($type == "http") {
+            return new HttpCheck();
         } else {
             return null;
         }
