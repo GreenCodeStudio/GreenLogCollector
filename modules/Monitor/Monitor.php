@@ -4,6 +4,7 @@ namespace Monitor;
 
 use Monitor\Check\CheckFactory;
 use Monitor\Repository\MonitorRepository;
+use Monitor\Repository\MonitorResultRepository;
 
 class Monitor extends \Core\BussinesLogic
 {
@@ -59,11 +60,21 @@ class Monitor extends \Core\BussinesLogic
 
     public function check()
     {
+        $resultRepository = new MonitorResultRepository();
         $monitors = $this->defaultDB->getAll();
         foreach ($monitors as $monitor) {
+            $start = microtime(true);
+            $startDate = date('Y-m-d H:i:s');
             $result = CheckFactory::getChecker($monitor->type)->check($monitor->address);
+            $end = microtime(true);
             dump($result);
-            
+            $resultRepository->insert([
+                'monitor_id' => $monitor->id,
+                'is_success' => $result['isSuccess'],
+                'status' => json_encode($result['status'] ?? null),
+                'stamp' => $startDate,
+                'response_time' => $end - $start,
+            ]);
         }
     }
 }

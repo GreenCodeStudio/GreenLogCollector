@@ -1,5 +1,5 @@
 <?php
-namespace Search\AsyncJobs;
+namespace Monitor\AsyncJobs;
 use Monitor\Monitor;
 
 class MonitorJobs extends \Core\AsyncJobController{

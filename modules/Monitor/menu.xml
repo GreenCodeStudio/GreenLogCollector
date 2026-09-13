@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<menu><group/><element><link>/Monitor</link><title>Monitor</title></element></menu>
+<menu><group/><element><link>/Monitor</link><title>Monitor</title></element><group/><element><link>/MonitorResult</link><title>MonitorResult</title></element></menu>

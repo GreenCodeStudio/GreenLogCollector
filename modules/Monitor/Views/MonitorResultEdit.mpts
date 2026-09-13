@@ -1,0 +1,30 @@
+<form>
+    <div class="topBarButtons">
+        <a href="/MonitorResult/" class="button"><span class="icon-cancel"></span>{{t("CommonBase.cancel")}}</a>
+        <button class=("button action-":type)><span class="icon-save"></span>{{t("CommonBase.save")}}</button>
+    </div>
+    <div class="grid page-MonitorResult page-MonitorResult-edit">
+        <input name="id" type="hidden" />
+        <section class=("card action-":type) data-width="6">
+            <header>
+                <h1>{{t("Monitor.MonitorResult.MonitorResult")}}</h1>
+            </header>
+          <label>
+            <span>{{t("Monitor.MonitorResult.monitor_id")}}</span>
+            <select data-foreign-key="monitor" name="monitor_id" required > </select>
+        </label><label>
+            <span>{{t("Monitor.MonitorResult.stamp")}}</span>
+            <input type="datetime-local" step="any" name="stamp" required />
+        </label><label>
+            <span>{{t("Monitor.MonitorResult.response_time")}}</span>
+            <input type="text" name="response_time"  />
+        </label><label>
+            <span>{{t("Monitor.MonitorResult.is_success")}}</span>
+            <input type="text" name="is_success"  />
+        </label><label>
+            <span>{{t("Monitor.MonitorResult.status")}}</span>
+            <input type="text" name="status"  />
+        </label>
+        </section>
+    </div>
+</form>
