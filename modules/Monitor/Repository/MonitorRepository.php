@@ -54,6 +54,8 @@ class MonitorRepository extends \Core\Repository
         $item = DB::get("
 SELECT m.*,
        (SELECT JSON_OBJECT('stamp', mr.stamp, 'responseTime', mr.response_time, 'isSuccess', mr.is_success, 'status', mr.status) FROM monitor_result mr WHERE mr.monitor_id = m.id ORDER BY stamp DESC LIMIT 1) AS last,
+       (SELECT JSON_OBJECT('all', count(*), 'success', sum(mr.is_success), 'minTime', min(if(mr.is_success, mr.response_time, null)), 'maxTime', max(if(mr.is_success, mr.response_time, null)), 'avgTime', avg(if(mr.is_success, mr.response_time, null))) FROM monitor_result mr WHERE mr.monitor_id = m.id AND mr.stamp > SUBDATE(NOW(), INTERVAL 1 WEEK)) AS week,
+       (SELECT JSON_OBJECT('all', count(*), 'success', sum(mr.is_success), 'minTime', min(if(mr.is_success, mr.response_time, null)), 'maxTime', max(if(mr.is_success, mr.response_time, null)), 'avgTime', avg(if(mr.is_success, mr.response_time, null))) FROM monitor_result mr WHERE mr.monitor_id = m.id AND mr.stamp > SUBDATE(NOW(), INTERVAL 1 YEAR)) AS `year`,
        (SELECT JSON_OBJECT('all', count(*), 'success', sum(mr.is_success), 'minTime', min(if(mr.is_success, mr.response_time, null)), 'maxTime', max(if(mr.is_success, mr.response_time, null)), 'avgTime', avg(if(mr.is_success, mr.response_time, null))) FROM monitor_result mr WHERE mr.monitor_id = m.id) AS total
 FROM monitor m 
 WHERE m.id = ?
@@ -61,6 +63,8 @@ WHERE m.id = ?
         if ($item) {
             $item->last = json_decode($item->last ?? 'null');
             $item->total = json_decode($item->total ?? 'null');
+            $item->week = json_decode($item->week ?? 'null');
+            $item->year = json_decode($item->year ?? 'null');
         }
         return $item;
     }

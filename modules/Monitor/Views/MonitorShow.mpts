@@ -44,6 +44,36 @@
 </section>
 <section class="card action-show" data-width="6">
 <header>
+    <h1>{{t("Monitor.Monitor.week")}}</h1>
+</header>
+<div class="pseudoLabel">
+    <span>{{t("Monitor.MonitorResult.percent")}}:</span>
+    <strong>{{item.week.success}}/{{item.week.all}}</strong>
+</div>
+<div class="pseudoLabel">
+    <span>{{t("Monitor.MonitorResult.time")}}:</span>
+    <strong>{{formatSeconds(item.week.minTime)}}/{{formatSeconds(item.week.avgTime)}}/{{formatSeconds(item.week.maxTime)}}</strong>
+</div>
+</section>
+
+
+<section class="card action-show" data-width="6">
+<header>
+    <h1>{{t("Monitor.Monitor.year")}}</h1>
+</header>
+<div class="pseudoLabel">
+    <span>{{t("Monitor.MonitorResult.percent")}}:</span>
+    <strong>{{item.year.success}}/{{item.year.all}}</strong>
+</div>
+<div class="pseudoLabel">
+    <span>{{t("Monitor.MonitorResult.time")}}:</span>
+    <strong>{{formatSeconds(item.year.minTime)}}/{{formatSeconds(item.year.avgTime)}}/{{formatSeconds(item.year.maxTime)}}</strong>
+</div>
+</section>
+
+
+<section class="card action-show" data-width="6">
+<header>
     <h1>{{t("Monitor.Monitor.total")}}</h1>
 </header>
 <div class="pseudoLabel">

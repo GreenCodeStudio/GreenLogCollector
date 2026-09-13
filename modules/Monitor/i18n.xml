@@ -34,6 +34,16 @@
             <value lang="en">Last Status</value>
             <value lang="de">Letzter Status</value>
         </node>
+        <node name="week">
+            <value lang="pl">Ostatni tydzień</value>
+            <value lang="en">Week</value>
+            <value lang="de">Woche</value>
+        </node>
+        <node name="year">
+            <value lang="pl">Ostatni rok</value>
+            <value lang="en">Year</value>
+            <value lang="de">Jahr</value>
+        </node>
         <node name="total">
             <value lang="pl">Podsumowanie</value>
             <value lang="en">Total</value>

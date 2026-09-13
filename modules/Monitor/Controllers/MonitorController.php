@@ -66,7 +66,6 @@ class MonitorController extends \Common\PageStandardController
         $data = $Monitor->getToShow($id);
         if ($data == null)
             throw new NotFoundException();
-        dump($data);
 
         $this->addView('Monitor', 'MonitorShow', ['item' => $data, 'formatSeconds'=>fn($x)=>Formatter::formatSeconds($x), 'formatDate'=>fn($x)=>Formatter::formatDate($x)]);
         $this->pushBreadcrumb(['title' => 'Monitor', 'url' => '/Monitor']);
