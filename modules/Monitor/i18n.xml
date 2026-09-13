@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root><node name="Monitor"><node name="Monitor"><value lang="en">Monitor</value></node><node name="id"><value lang="en">id</value></node><node name="name"><value lang="en">name</value></node><node name="address"><value lang="en">address</value></node><node name="type"><value lang="en">type</value></node><node name="project_id"><value lang="en">project_id</value></node></node><node name="MonitorList"><node name="header"><value lang="en">List of elements of type Monitor</value></node></node></root>

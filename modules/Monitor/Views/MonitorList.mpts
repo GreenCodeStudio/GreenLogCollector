@@ -1,0 +1,11 @@
+<div class="topBarButtons">
+    <a href="/Monitor/add" class="button action-add"><span class="icon-add"></span> {{t("CommonBase.add")}}</a>
+</div>
+<div class="grid page-Monitor  page-Monitor-list">
+    <section class="card action-view" data-width="6">
+        <header>
+            <h1>{{t("Monitor.MonitorList.header")}}</h1>
+        </header>
+        <div class="container"></div>
+    </section>
+</div>

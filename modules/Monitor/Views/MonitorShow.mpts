@@ -1,0 +1,26 @@
+<form>
+    <div class="topBarButtons">
+        <a href=("/Monitor/edit/":item.id) class="button action-edit"><span class="icon-edit"></span>{{t("CommonBase.edit")}}</a>
+    </div>
+    <div class="grid page-Monitor page-Monitor-show">
+        <input name="id" type="hidden" />
+        <section class=("card action-":type) data-width="6">
+            <header>
+                <h1>{{t("Monitor.Monitor.Monitor")}}</h1>
+            </header>
+          <div class="pseudoLabel">
+            <span>{{t("Monitor.Monitor.name")}}:</span>
+            <strong>{{item.name}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("Monitor.Monitor.address")}}:</span>
+            <strong>{{item.address}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("Monitor.Monitor.type")}}:</span>
+            <strong>{{item.type}}</strong>
+        </div><div class="pseudoLabel">
+            <span>{{t("Monitor.Monitor.project_id")}}:</span>
+            <strong>{{item.project_id}}</strong>
+        </div>
+        </section>
+    </div>
+</form>
