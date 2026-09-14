@@ -72,9 +72,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          submodules: recursive
+        run: |
+          git submodule sync --recursive  
+          git submodule update --init --recursive
       - name: Build
         run: |
           docker build -t greenlogcollector_demo:latest -f docker/demo.dockerfile .
