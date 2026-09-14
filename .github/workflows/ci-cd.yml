@@ -30,13 +30,10 @@ jobs:
           composer upgrade
           pwsh -Command ". ./script; Run-PhpStan"
 
-  deployment:
+  build:
     runs-on: ubuntu-latest
     container:
       image: matrix0123456789/selenium:latest
-    if: github.event_name == 'workflow_dispatch'
-    environment:
-      name: deployment
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
