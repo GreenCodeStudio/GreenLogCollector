@@ -71,8 +71,8 @@ jobs:
   buildDemoContainer:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        run: |
+      - uses: actions/checkout@v4
+      - run: |
           git submodule sync --recursive  
           git submodule update --init --recursive
       - name: Build
