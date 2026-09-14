@@ -1,0 +1,73 @@
+name: CI/CD
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    container:
+      image: matrix0123456789/selenium:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Prepare directories
+        run: |
+          mkdir -p cache tmp
+          chmod 777 cache tmp
+
+      - name: Run static analysis
+        env:
+          GIT_SUBMODULE_STRATEGY: recursive
+          PHP_EXTENSION_GD: 1
+        run: |
+          composer upgrade
+          composer upgrade
+          pwsh -Command ". ./script; Run-PhpStan"
+
+  deployment:
+    runs-on: ubuntu-latest
+    container:
+      image: matrix0123456789/selenium:latest
+    if: github.event_name == 'workflow_dispatch'
+    environment:
+      name: deployment
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Prepare directories
+        run: |
+          mkdir -p cache tmp
+          chmod 777 cache tmp
+
+      - name: Build release package
+        env:
+          project: greenlogcollector
+        run: |
+          hash=$(git rev-parse HEAD)
+          echo "hash = $hash"
+          echo "VERSION = $hash" > .env.version
+          composer upgrade -n --ignore-platform-reqs
+          composer upgrade -n --ignore-platform-reqs
+          yarn
+          pwsh -Command ". ./script; Build-Project -production"
+          file="${hash}.zip"
+          rm -rf node_modules vendor
+          zip --symlinks -r "$file" .
+          mkdir -p out
+          mv "$file" out/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: out
+          path: out
+          retention-days: 365
