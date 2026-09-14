@@ -11,10 +11,10 @@ jobs:
     container:
       image: matrix0123456789/selenium:latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          submodules: recursive
+      - uses: actions/checkout@v4
+      - run: |
+          git submodule sync --recursive  
+          git submodule update --init --recursive
 
       - name: Prepare directories
         run: |
@@ -35,10 +35,10 @@ jobs:
     container:
       image: matrix0123456789/selenium:latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          submodules: recursive
+      - uses: actions/checkout@v4
+      - run: |
+          git submodule sync --recursive  
+          git submodule update --init --recursive
 
       - name: Prepare directories
         run: |
