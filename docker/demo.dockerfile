@@ -10,6 +10,6 @@ EXPOSE 80
 COPY docker/demo.sh /demo.sh
 COPY docker/demo.nginx.conf /etc/nginx/http.d/default.conf
 COPY ../.. /app
-RUN pwsh -Command "cd /app; . ./script.ps1; Build-Project"
+RUN pwsh -Command "cd /app; . ./script.ps1; Build-Project -production"
 RUN chmod +x /demo.sh
 CMD ["/demo.sh"]
