@@ -12,6 +12,7 @@ class PublicController extends \Common\PageStandardController
         $statusPage = (new StatusPage())->getForPublicView($code);
         if ($statusPage == null)
             throw new NotFoundException();
+        $this->pushBreadcrumb(['title' => $statusPage->name]);
         $this->addView('StatusPage', 'PublicStatusPage', ['item' => $statusPage]);
     }
     public function hasPermission(string $methodName)

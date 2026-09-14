@@ -40,5 +40,6 @@ use Core\Formatter;
     window.DEBUG =<?=json_encode($this->isDebug())?>;
     //]]>
 </script>
+<script src="/dist/StatusPage/public.js"></script>
 </body>
 </html>
