@@ -68,3 +68,21 @@ jobs:
           name: out
           path: out
           retention-days: 365
+  buildDemoContainer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Build
+        run: |
+          docker build -t greenlogcollector_demo:latest -f docker/demo.dockerfile .
+      - name: Publish to Docker Hub
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/demo.dockerfile
+          push: true
+          tags: matrix0123456789/greenlogcollector_demo:latest
+
