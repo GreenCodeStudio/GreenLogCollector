@@ -54,10 +54,21 @@ class StatusPageRepository extends \Core\Repository
         $item = DB::get("SELECT * FROM status_page WHERE code = ?", [$code])[0] ?? null;
         if (!empty($item)) {
             $item->monitors = DB::get("SELECT m.*,
-       (SELECT JSON_OBJECT('stamp', mr.stamp, 'responseTime', mr.responseTime, 'isSuccess', mr.isSuccess, 'status', mr.status) FROM monitor_result mr WHERE mr.monitor_id = m.id ORDER BY stamp DESC LIMIT 1) AS last
+       (
+       SELECT JSON_OBJECT('stamp', mr.stamp, 'responseTime', mr.responseTime, 'isSuccess', mr.isSuccess, 'status', mr.status) 
+        FROM monitor_result mr 
+        WHERE mr.monitor_id = m.id 
+        ORDER BY stamp DESC
+           LIMIT 1
+        ) AS last,
+(SELECT JSON_ARRAYAGG(JSON_OBJECT('stamp',mr.stamp, 'isSuccess', mr.isSuccess)) FROM monitor_result mr 
+        WHERE mr.monitor_id = m.id AND stamp >= DATE_SUB(NOW(), INTERVAL 31 DAY)
+        ORDER BY stamp DESC
+        ) AS results
 FROM status_page_monitor spm JOIN monitor m ON spm.monitor_id=m.id WHERE spm.statusPage_id = ?", [$item->id]);
             foreach ($item->monitors as $monitor) {
                 $monitor->last = json_decode($monitor->last ?? 'null');
+                $monitor->results = json_decode($monitor->results ?? '[]');
             }
         }
         return $item;

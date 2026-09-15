@@ -5,4 +5,26 @@
         <value lang="en">en</value>
         <value lang="de">de</value>
     </node>
+    <node name="statusPage">
+        <node name="ok">
+            <value lang="pl">OK</value>
+            <value lang="en">OK</value>
+            <value lang="de">OK</value>
+        </node>
+        <node name="fail">
+            <value lang="pl">Nie działa</value>
+            <value lang="en">Fail</value>
+            <value lang="de">Fehler</value>
+        </node>
+        <node name="from">
+            <value lang="pl">od</value>
+            <value lang="en">from</value>
+            <value lang="de">von</value>
+        </node>
+        <node name="to">
+            <value lang="pl">do</value>
+            <value lang="en">to</value>
+            <value lang="de">zu</value>
+        </node>
+    </node>
 </root>

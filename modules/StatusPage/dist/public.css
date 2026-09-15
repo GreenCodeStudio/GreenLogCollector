@@ -7,8 +7,10 @@
     --border: #d7e2d3;
     --ok-bg: #e6f6ea;
     --ok-border: #7ecf90;
+    --ok-timeline: #3f8f64;
     --fail-bg: #fdebec;
     --fail-border: #e38d95;
+    --fail-timeline: #9f4f57;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,6 +84,27 @@ h1 {
     &[data-status="0"] {
         background: var(--fail-bg);
         border-color: var(--fail-border);
+    }
+
+    .timeline {
+        height: 2em;
+        position: relative;
+
+        .timeline-range {
+            height: 100%;
+            position: absolute;
+            right: calc(var(--end) / 3600 / 24 / 30 * -100%);
+            width: calc((var(--end) - var(--start)) / 3600 / 24 / 30 * 100%);
+            top: 0;
+
+            &[data-isSuccess="1"] {
+                background: var(--ok-timeline);
+            }
+
+            &[data-isSuccess="0"] {
+                background: var(--fail-timeline);
+            }
+        }
     }
 }
 

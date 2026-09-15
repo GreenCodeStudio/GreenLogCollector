@@ -1,4 +1,5 @@
 <?php
+
 namespace StatusPage;
 
 use StatusPage\Repository\StatusPageRepository;
@@ -29,7 +30,7 @@ class StatusPage extends \Core\BussinesLogic
         return $ret;
     }
 
-    public function insert($data):int
+    public function insert($data): int
     {
         $filtered = $this->filterData($data);
 
@@ -37,6 +38,7 @@ class StatusPage extends \Core\BussinesLogic
         \Core\WebSocket\Sender::sendToUsers(["StatusPage", "StatusPage", "Insert", $id]);
         return $id;
     }
+
     public function getAll()
     {
         return $this->defaultDB->getAll();
@@ -44,7 +46,29 @@ class StatusPage extends \Core\BussinesLogic
 
     public function getForPublicView($code)
     {
-        return $this->defaultDB->getForPublicView($code);
+        $list = $this->defaultDB->getForPublicView($code);
+        foreach ($list->monitors as $item) {
+            $ranges = [];
+            $now = time();
+            $last = null;
+            foreach ($item->results as $result) {
+                $stamp = strtotime($result->stamp);
+                if ($last === null || $last->isSuccess != $result->isSuccess) {
+                    if ($last !== null) {
+                        $ranges[] = [
+                            'start' => strtotime($last->stamp) - $now,
+                            'end' => $stamp - $now,
+                            'isSuccess' => $last->isSuccess,
+                            'title' => ($last->isSuccess ? t('StatusPage.statusPage.ok') : t('StatusPage.statusPage.fail')).' '.t('StatusPage.statusPage.from').' '.date('Y-m-d H:i:s', strtotime($last->stamp)).' '.t('StatusPage.statusPage.to').' '.date('Y-m-d H:i:s', $stamp),
+                        ];
+                    }
+                    $last = $result;
+                }
+            }
+            $item->ranges = $ranges;
+            unset ($item->results);
+        }
+        return $list;
     }
 
 
