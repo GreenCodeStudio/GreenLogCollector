@@ -47,8 +47,8 @@ class StatusPage extends \Core\BussinesLogic
     public function getForPublicView($code)
     {
         $list = $this->defaultDB->getForPublicView($code);
-        $okTime=0;
-        $failTime=0;
+        $okTime = 0;
+        $failTime = 0;
         foreach ($list->monitors as $item) {
             $ranges = [];
             $now = time();
@@ -87,6 +87,11 @@ class StatusPage extends \Core\BussinesLogic
             }
             $item->ranges = $ranges;
             $item->successRatio = $okTime / ($okTime + $failTime);
+            if ($item->type == 'ping') {
+                $item->visualAddress = 'ping:'.$item->address;
+            } else {
+                $item->visualAddress = $item->address;
+            }
             unset ($item->results);
         }
         return $list;
