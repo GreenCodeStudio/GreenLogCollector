@@ -2,6 +2,8 @@
 <:foreach collection=item.monitors item=monitor>
 <section class="monitorCondensed" data-status=(monitor.last.isSuccess??0) >
     <h2>{{monitor.name}}</h2>
+
+<div>OK: {{formatStatusRatio(monitor.successRatio??null)}}%</div>
 <div class="timeline">
     <:foreach collection=monitor.ranges item=range >
         <div class="timeline-range" style="--start:":range.start:";--end:":range.end:";" data-isSuccess=range.isSuccess title=range.title >&nbsp;</div>
