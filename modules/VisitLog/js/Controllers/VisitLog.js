@@ -10,7 +10,7 @@ import {Permissions} from "../../../Core/js/permissions";
 export class index {
     constructor(page, data) {
         const container = page.querySelector('.page-VisitLog-list .container');
-        let datasource = new DatasourceAjax('VisitLog', 'getTable', ['VisitLog', 'VisitLog'], null, 'updateMultiple');
+        let datasource = new DatasourceAjax('VisitLog', 'getTable', ['VisitLog', 'VisitLog'], null, 'updateMultiple', true);
         let objectsList = new ObjectsList(datasource);
         objectsList.allowTableEdit = true;
         objectsList.columns = [];

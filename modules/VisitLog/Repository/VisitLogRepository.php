@@ -27,15 +27,19 @@ class VisitLogRepository extends \Core\Repository
 
     public function getDataTable($options)
     {
-        $start = (int)$options->start;
-        $limit = (int)$options->limit;
-        $sqlOrder = $this->getOrderSQL($options);
         $sqlParams = [];
         $filterSql = $this->generateColumnFilterSql($options->columnFilters, $this->datatableColumnMap(), $sqlParams);
-        dump($filterSql, $sqlParams);
-        $rows = DB::get("SELECT * FROM visit_log WHERE $filterSql$sqlOrder LIMIT $start,$limit", $sqlParams);
-        $total = DB::get("SELECT count(*) as count FROM visit_log WHERE $filterSql", $sqlParams)[0]->count;
-        return ['rows' => $rows, 'total' => $total];
+        if ($options->mode == 'summary') {
+            $summary = DB::get("SELECT date(created) as date, count(*) as count FROM visit_log WHERE $filterSql GROUP BY date(created)", $sqlParams);
+            return ['summary' => $summary];
+        } else {
+            $start = (int)$options->start;
+            $limit = (int)$options->limit;
+            $sqlOrder = $this->getOrderSQL($options);
+            $rows = DB::get("SELECT * FROM visit_log WHERE $filterSql$sqlOrder LIMIT $start,$limit", $sqlParams);
+            $total = DB::get("SELECT count(*) as count FROM visit_log WHERE $filterSql", $sqlParams)[0]->count;
+            return ['rows' => $rows, 'total' => $total];
+        }
     }
 
     private function getOrderSQL($options)
