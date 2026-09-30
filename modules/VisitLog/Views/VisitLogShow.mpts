@@ -4,7 +4,7 @@
     </div>
     <div class="grid page-VisitLog page-VisitLog-show">
         <input name="id" type="hidden" />
-        <section class=("card action-":type) data-width="6">
+        <section class="card action-show" data-width="6">
             <header>
                 <h1>{{t("VisitLog.VisitLog.VisitLog")}}</h1>
             </header>

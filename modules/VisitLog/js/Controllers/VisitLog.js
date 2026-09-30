@@ -14,55 +14,63 @@ export class index {
         let objectsList = new ObjectsList(datasource);
         objectsList.allowTableEdit = true;
         objectsList.columns = [];
-                objectsList.columns.push({
+        objectsList.columns.push({
             name: t('VisitLog.project_id'),
             dataName: 'project_id',
             sortName: 'project_id',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('VisitLog.userIdentifier'),
             dataName: 'userIdentifier',
             sortName: 'userIdentifier',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('VisitLog.userAgent'),
             dataName: 'userAgent',
             sortName: 'userAgent',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('VisitLog.ipAddress'),
             dataName: 'ipAddress',
             sortName: 'ipAddress',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('VisitLog.sessionIdentifier'),
             dataName: 'sessionIdentifier',
             sortName: 'sessionIdentifier',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('VisitLog.pageOpenIdentifier'),
             dataName: 'pageOpenIdentifier',
             sortName: 'pageOpenIdentifier',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('VisitLog.url'),
             dataName: 'url',
             sortName: 'url',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('VisitLog.added'),
             dataName: 'added',
             sortName: 'added',
             width: 100,
             widthGrow: 1
-        });        objectsList.columns.push({
+        });
+        objectsList.columns.push({
             name: t('VisitLog.type'),
             dataName: 'type',
             sortName: 'type',
@@ -72,12 +80,13 @@ export class index {
         objectsList.generateActions = (rows, mode) => {
             let ret = [];
             if (rows.length == 1) {
-                if (Permissions.can('VisitLog', 'edit')) {
+                if (Permissions.can('VisitLog', 'show')) {
                     ret.push({
-                        name: TCommonBase("edit"),
-                        icon: 'icon-edit',
-                        href: "/VisitLog/edit/" + rows[0].id,
-                        action:"edit"
+                        name: TCommonBase("show"),
+                        icon: 'icon-show',
+                        href: "/VisitLog/show/" + rows[0].id,
+                        action: "show",
+                        main:true
                     });
                 }
             }
@@ -87,6 +96,7 @@ export class index {
         objectsList.refresh();
     }
 }
+
 export class edit {
     constructor(page, data) {
         let form = new FormManager(page.querySelector('form'));
@@ -99,10 +109,11 @@ export class edit {
         }
     }
 }
+
 export class add {
     constructor(page, data) {
         let form = new FormManager(page.querySelector('form'));
-        if(data && data.selects)
+        if (data && data.selects)
             form.loadSelects(data.selects);
 
         form.submit = async newData => {
