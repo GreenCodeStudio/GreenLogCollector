@@ -19,56 +19,64 @@ export class index {
             dataName: 'project_id',
             sortName: 'project_id',
             width: 100,
-            widthGrow: 1
+            widthGrow: 1,
+            isFilter: true
         });
         objectsList.columns.push({
             name: t('VisitLog.userIdentifier'),
             dataName: 'userIdentifier',
             sortName: 'userIdentifier',
             width: 100,
-            widthGrow: 1
+            widthGrow: 1,
+            isFilter: true
         });
         objectsList.columns.push({
             name: t('VisitLog.userAgent'),
             dataName: 'userAgent',
             sortName: 'userAgent',
             width: 100,
-            widthGrow: 1
+            widthGrow: 1,
+            isFilter: true
         });
         objectsList.columns.push({
             name: t('VisitLog.ipAddress'),
             dataName: 'ipAddress',
             sortName: 'ipAddress',
             width: 100,
-            widthGrow: 1
+            widthGrow: 1,
+            isFilter: true
         });
         objectsList.columns.push({
             name: t('VisitLog.sessionIdentifier'),
             dataName: 'sessionIdentifier',
             sortName: 'sessionIdentifier',
             width: 100,
-            widthGrow: 1
+            widthGrow: 1,
+            isFilter: true
         });
         objectsList.columns.push({
             name: t('VisitLog.pageOpenIdentifier'),
             dataName: 'pageOpenIdentifier',
             sortName: 'pageOpenIdentifier',
             width: 100,
-            widthGrow: 1
+            widthGrow: 1,
+            isFilter: true
         });
         objectsList.columns.push({
             name: t('VisitLog.url'),
             dataName: 'url',
             sortName: 'url',
             width: 100,
-            widthGrow: 1
+            widthGrow: 1,
+            isFilter: true
         });
         objectsList.columns.push({
             name: t('VisitLog.added'),
             dataName: 'added',
             sortName: 'added',
             width: 100,
-            widthGrow: 1
+            widthGrow: 1,
+            isFilter: true
         });
         objectsList.columns.push({
             name: t('VisitLog.type'),
@@ -93,6 +101,7 @@ export class index {
             return ret;
         }
         container.append(objectsList);
+        objectsList.paramsInUrl=true;
         objectsList.refresh();
     }
 }

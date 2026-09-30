@@ -10,29 +10,37 @@
             </header>
           <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.project_id")}}:</span>
-            <strong>{{item.project_id}}</strong>
-        </div><div class="pseudoLabel">
+            <strong><a href=links.project_id >{{item.project_id}}</a></strong>
+        </div>
+            <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.userIdentifier")}}:</span>
-            <strong>{{item.userIdentifier}}</strong>
-        </div><div class="pseudoLabel">
+            <strong><a href=links.userIdentifier >{{item.userIdentifier}}</a></strong>
+        </div>
+            <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.userAgent")}}:</span>
-            <strong>{{item.userAgent}}</strong>
-        </div><div class="pseudoLabel">
+            <strong><a href=links.userAgent >{{item.userAgent}}</a></strong>
+        </div>
+            <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.ipAddress")}}:</span>
-            <strong>{{item.ipAddress}}</strong>
-        </div><div class="pseudoLabel">
+            <strong><a href=links.ipAddress >{{item.ipAddress}}</a></strong>
+        </div>
+            <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.sessionIdentifier")}}:</span>
-            <strong>{{item.sessionIdentifier}}</strong>
-        </div><div class="pseudoLabel">
+            <strong><a href=links.sessionIdentifier >{{item.sessionIdentifier}}</a></strong>
+        </div>
+            <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.pageOpenIdentifier")}}:</span>
-            <strong>{{item.pageOpenIdentifier}}</strong>
-        </div><div class="pseudoLabel">
+            <strong><a href=links.pageOpenIdentifier >{{item.pageOpenIdentifier}}</a></strong>
+        </div>
+            <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.url")}}:</span>
-            <strong>{{item.url}}</strong>
-        </div><div class="pseudoLabel">
+            <strong><a href=links.url >{{item.url}}</a></strong>
+        </div>
+            <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.added")}}:</span>
             <strong>{{item.added}}</strong>
-        </div><div class="pseudoLabel">
+        </div>
+            <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.type")}}:</span>
             <strong>{{item.type}}</strong>
         </div>
