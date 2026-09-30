@@ -1440,16 +1440,16 @@
         },
         {
             "name": "mkrawczyk/mpts",
-            "version": "v1.5.13",
+            "version": "v1.5.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GreenCodeStudio/mpts-php.git",
-                "reference": "8db82070a4731d8f1c2eb557c718a585a18e7eb6"
+                "reference": "45190c2174d66822073260914e26f986d60fb96f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GreenCodeStudio/mpts-php/zipball/8db82070a4731d8f1c2eb557c718a585a18e7eb6",
-                "reference": "8db82070a4731d8f1c2eb557c718a585a18e7eb6",
+                "url": "https://api.github.com/repos/GreenCodeStudio/mpts-php/zipball/45190c2174d66822073260914e26f986d60fb96f",
+                "reference": "45190c2174d66822073260914e26f986d60fb96f",
                 "shasum": ""
             },
             "require": {
@@ -1488,9 +1488,9 @@
             ],
             "support": {
                 "issues": "https://github.com/GreenCodeStudio/mpts-php/issues",
-                "source": "https://github.com/GreenCodeStudio/mpts-php/tree/v1.5.13"
+                "source": "https://github.com/GreenCodeStudio/mpts-php/tree/v1.5.14"
             },
-            "time": "2026-09-21T16:18:12+00:00"
+            "time": "2026-09-30T17:04:28+00:00"
         },
         {
             "name": "monolog/monolog",
