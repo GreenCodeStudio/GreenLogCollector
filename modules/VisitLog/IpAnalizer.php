@@ -23,6 +23,12 @@ class IpAnalizer
         return false;
     }
 
+    public function isAbuseIpDbBlacklisted($ip)
+    {
+        $abuseipdbBlacklist = explode("\n", file_get_contents(__DIR__.'/abuseipdb_blacklist.csv'));
+        return in_array($ip, $abuseipdbBlacklist);
+    }
+
     public function getCrawlers(bool $forceUpdate = false)
     {
         $tmpFile = __DIR__.'/../../tmp/crawlers.json';
