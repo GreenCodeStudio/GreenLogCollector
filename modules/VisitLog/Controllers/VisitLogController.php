@@ -4,6 +4,8 @@ namespace VisitLog\Controllers;
 
 use Authorization\Permissions;
 use Core\Exceptions\NotFoundException;
+use DeviceDetector\DeviceDetector;
+use VisitLog\IpAnalizer;
 
 class VisitLogController extends \Common\PageStandardController
 {
@@ -23,6 +25,12 @@ class VisitLogController extends \Common\PageStandardController
         $data = $VisitLog->getById($id);
         if ($data == null)
             throw new NotFoundException();
+        if($data->ipAddress) {
+            $data->ipAddressIsBot = (new IpAnalizer())->isBot($data->ipAddress);
+            $data->ipAddressAbusive = (new IpAnalizer())->isAbusive($data->ipAddress);
+        }
+
+        dump($data);
         $links = [
             'project_id' => '/VisitLog?columnFilters='.urlencode(json_encode([["project_id", ["type" => "equals", "value" => $data->project_id]]])),
             'userIdentifier' => '/VisitLog?columnFilters='.urlencode(json_encode([["userIdentifier", ["type" => "equals", "value" => $data->userIdentifier]]])),

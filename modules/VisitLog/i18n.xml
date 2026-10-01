@@ -19,6 +19,12 @@
         <node name="ipAddress">
             <value lang="en">ipAddress</value>
         </node>
+        <node name="ipAddressIsBot">
+            <value lang="en">ipAddressIsBot</value>
+        </node>
+        <node name="ipAddressAbusive">
+            <value lang="en">ipAddressAbusive</value>
+        </node>
         <node name="sessionIdentifier">
             <value lang="en">sessionIdentifier</value>
         </node>

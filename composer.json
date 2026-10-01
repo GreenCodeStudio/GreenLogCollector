@@ -15,7 +15,8 @@
                                                        "modules/Core/composer.json",
                                                        "modules/Monitor/composer.json",
                                                        "modules/Notifications/composer.json",
-                                                       "modules/Search/composer.json"
+                                                       "modules/Search/composer.json",
+                                                       "modules/VisitLog/composer.json"
                                                    ]
                                    }
               }

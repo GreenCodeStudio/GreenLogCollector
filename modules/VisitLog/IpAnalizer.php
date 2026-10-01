@@ -14,7 +14,7 @@ class IpAnalizer
                     $baseLong = ip2long($base);
                     $maskLong = ~((1 << (32 - (int)$mask)) - 1);
                     if (($ipLong & $maskLong) === ($baseLong & $maskLong)) {
-                        return true;
+                        return $serviceInfo;
                     }
                 }
             }

@@ -70,6 +70,8 @@ class VisitLogRepository extends \Core\Repository
             foreach ($item->extraLogs as $log) {
                 $log->data = json_decode($log->data??'null');
             }
+        }else{
+            $item->extraLogs=null;
         }
         return $item;
     }

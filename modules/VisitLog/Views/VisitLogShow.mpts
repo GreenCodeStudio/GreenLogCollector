@@ -21,9 +21,17 @@
             <strong><a href=links.userAgent >{{item.userAgent}}</a></strong>
         </div>
             <div class="pseudoLabel">
-            <span>{{t("VisitLog.VisitLog.ipAddress")}}:</span>
-            <strong><a href=links.ipAddress >{{item.ipAddress}}</a></strong>
-        </div>
+                <span>{{t("VisitLog.VisitLog.ipAddress")}}:</span>
+                <strong><a href=links.ipAddress >{{item.ipAddress}}</a></strong>
+            </div>
+            <div class="pseudoLabel">
+                <span>{{t("VisitLog.VisitLog.ipAddressIsBot")}}:</span>
+                <strong>{{item.ipAddressIsBot}}</strong>
+            </div>
+            <div class="pseudoLabel">
+                <span>{{t("VisitLog.VisitLog.ipAddressAbusive")}}:</span>
+                <strong>{{item.ipAddressAbusive}}</strong>
+            </div>
             <div class="pseudoLabel">
             <span>{{t("VisitLog.VisitLog.sessionIdentifier")}}:</span>
             <strong><a href=links.sessionIdentifier >{{item.sessionIdentifier}}</a></strong>
@@ -49,7 +57,7 @@
                 <strong>{{item.botProbability}}</strong>
             </div>
         </section>
-        <:if condition="item.extraLogs">
+        <:if condition=item.extraLogs >
             <section class="card action-show" data-width="6">
                 <:foreach collection=item.extraLogs item=extraLog>
                     <div>
