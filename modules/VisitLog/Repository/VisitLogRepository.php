@@ -21,7 +21,7 @@ class VisitLogRepository extends \Core\Repository
 
     private function datatableColumnMap()
     {
-        return ['project_id' => 'project_id', 'userIdentifier' => 'userIdentifier', 'userAgent' => 'userAgent', 'ipAddress' => 'ipAddress', 'sessionIdentifier' => 'sessionIdentifier', 'pageOpenIdentifier' => 'pageOpenIdentifier', 'url' => 'url', 'created' => 'created', 'added' => 'added', 'type' => 'type'];
+        return ['project_id' => 'project_id', 'userIdentifier' => 'userIdentifier', 'userAgent' => 'userAgent', 'ipAddress' => 'ipAddress', 'sessionIdentifier' => 'sessionIdentifier', 'pageOpenIdentifier' => 'pageOpenIdentifier', 'url' => 'url', 'created' => 'created', 'added' => 'added', 'type' => 'type', 'botProbability' => 'botProbability'];
 
     }
 

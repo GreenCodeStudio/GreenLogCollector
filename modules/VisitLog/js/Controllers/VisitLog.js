@@ -85,6 +85,14 @@ export class index {
             width: 100,
             widthGrow: 1
         });
+        objectsList.columns.push({
+            name: t('VisitLog.botProbability'),
+            dataName: 'botProbability',
+            sortName: 'botProbability',
+            width: 100,
+            widthGrow: 1,
+            content: x => Math.round(x.botProbability * 100) + '%'
+        });
         objectsList.generateActions = (rows, mode) => {
             let ret = [];
             if (rows.length == 1) {
@@ -94,14 +102,14 @@ export class index {
                         icon: 'icon-show',
                         href: "/VisitLog/show/" + rows[0].id,
                         action: "show",
-                        main:true
+                        main: true
                     });
                 }
             }
             return ret;
         }
         container.append(objectsList);
-        objectsList.paramsInUrl=true;
+        objectsList.paramsInUrl = true;
         objectsList.refresh();
     }
 }
