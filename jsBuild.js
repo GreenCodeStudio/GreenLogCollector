@@ -4,6 +4,7 @@ import  "./modules/Authorization/js/index";
 import  "./modules/CommonBase/js/index";
 import  "./modules/Core/js/index";
 import  "./modules/ExternalApplication/js/index";
+import  "./modules/ExtraLog/js/index";
 import  "./modules/Monitor/js/index";
 import  "./modules/Project/js/index";
 import  "./modules/Search/js/index";

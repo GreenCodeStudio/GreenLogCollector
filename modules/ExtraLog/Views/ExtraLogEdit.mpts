@@ -1,0 +1,33 @@
+<form>
+    <div class="topBarButtons">
+        <a href="/ExtraLog/" class="button"><span class="icon-cancel"></span>{{t("CommonBase.cancel")}}</a>
+        <button class=("button action-":type)><span class="icon-save"></span>{{t("CommonBase.save")}}</button>
+    </div>
+    <div class="grid page-ExtraLog page-ExtraLog-edit">
+        <input name="id" type="hidden" />
+        <section class=("card action-":type) data-width="6">
+            <header>
+                <h1>{{t("ExtraLog.ExtraLog.ExtraLog")}}</h1>
+            </header>
+          <label>
+            <span>{{t("ExtraLog.ExtraLog.project_id")}}</span>
+            <select data-foreign-key="project" name="project_id"  > </select>
+        </label><label>
+            <span>{{t("ExtraLog.ExtraLog.pageOpenIdentifier")}}</span>
+            <input type="text" name="pageOpenIdentifier"  />
+        </label><label>
+            <span>{{t("ExtraLog.ExtraLog.added")}}</span>
+            <input type="datetime-local" step="any" name="added" required />
+        </label><label>
+            <span>{{t("ExtraLog.ExtraLog.source")}}</span>
+            <input type="text" name="source"  />
+        </label><label>
+            <span>{{t("ExtraLog.ExtraLog.type")}}</span>
+            <input type="text" name="type"  />
+        </label><label>
+            <span>{{t("ExtraLog.ExtraLog.data")}}</span>
+            <input type="text" name="data"  />
+        </label>
+        </section>
+    </div>
+</form>
