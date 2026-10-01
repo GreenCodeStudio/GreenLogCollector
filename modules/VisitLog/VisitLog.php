@@ -76,8 +76,9 @@ class VisitLog extends \Core\BussinesLogic
         if((new IpAnalizer())->isBot($filtered['ipAddress'])) {
             return 1.0;
         }
-        if((new IpAnalizer())->isAbuseIpDbBlacklisted($filtered['ipAddress'])) {
-            return 0.9;
+        $abusiveCount=(new IpAnalizer())->isAbusive($filtered['ipAddress']);
+        if($abusiveCount > 0) {
+            return 1 - (0.5/(1+$abusiveCount));
         }
         return 0.5; // Default probability
     }

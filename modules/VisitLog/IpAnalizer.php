@@ -23,10 +23,16 @@ class IpAnalizer
         return false;
     }
 
-    public function isAbuseIpDbBlacklisted($ip)
+    public function isAbusive($ip)
     {
-        $abuseipdbBlacklist = explode("\n", file_get_contents(__DIR__.'/abuseipdb_blacklist.csv'));
-        return in_array($ip, $abuseipdbBlacklist);
+        $list=$this->getIpsum();
+        foreach ($list as $blacklistedIp) {
+            if(str_starts_with($blacklistedIp, $ip)) {
+                [$ip, $count] = explode("\t", $blacklistedIp);
+                return (int)$count;
+            }
+        }
+        return 0;
     }
 
     public function getCrawlers(bool $forceUpdate = false)
@@ -41,6 +47,18 @@ class IpAnalizer
             return json_decode(file_get_contents($tmpFile));
         }
     }
+    public function getIpsum(bool $forceUpdate = false)
+{
+    $tmpFile = __DIR__.'/../../tmp/ipsum.txt';
+    $webFile = 'https://raw.githubusercontent.com/stamparm/ipsum/master/ipsum.txt';
+    if (!file_exists($tmpFile) || $forceUpdate) {
+        $data = file_get_contents($webFile);
+        file_put_contents($tmpFile, $data);
+        return explode("\n", $data);
+    } else {
+        return explode("\n", file_get_contents($tmpFile));
+    }
+}
 
     public function getMonitoring(bool $forceUpdate = false)
     {
