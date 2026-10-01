@@ -41,9 +41,13 @@
             <strong>{{item.added}}</strong>
         </div>
             <div class="pseudoLabel">
-            <span>{{t("VisitLog.VisitLog.type")}}:</span>
-            <strong>{{item.type}}</strong>
-        </div>
+                <span>{{t("VisitLog.VisitLog.type")}}:</span>
+                <strong>{{item.type}}</strong>
+            </div>
+            <div class="pseudoLabel">
+                <span>{{t("VisitLog.VisitLog.botProbability")}}:</span>
+                <strong>{{item.botProbability}}</strong>
+            </div>
         </section>
         <:if condition="item.extraLogs">
             <section class="card action-show" data-width="6">
@@ -63,7 +67,7 @@
                         </div>
                         <div class="pseudoLabel">
                             <span>data</span>
-                            <strong>{{dump(extraLog.data)}}</strong>
+                            <pre>{{dump(extraLog.data)}}</pre>
                         </div>
                     </div>
                 </:foreach>
