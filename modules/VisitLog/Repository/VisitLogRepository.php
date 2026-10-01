@@ -61,4 +61,12 @@ class VisitLogRepository extends \Core\Repository
         else
             return DB::get("SELECT * FROM visit_log");
     }
+    public function getById($id)
+    {
+        $item = DB::get("SELECT * FROM visit_log WHERE id = :id", ['id' => $id])[0]??null;
+        if ($item && $item->pageOpenIdentifier){
+            $item->extraLogs=DB::get("SELECT * FROM extra_log WHERE pageOpenIdentifier = :pageOpenIdentifier AND project_id = :project_id ORDER BY created ASC", ['pageOpenIdentifier' => $item->pageOpenIdentifier, 'project_id' => $item->project_id]);
+        }
+        return $item;
+    }
 }

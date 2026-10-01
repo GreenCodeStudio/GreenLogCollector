@@ -45,5 +45,29 @@
             <strong>{{item.type}}</strong>
         </div>
         </section>
+        <:if condition="item.extraLogs">
+            <section class="card action-show" data-width="6">
+                <:foreach collection=item.extraLogs item=extraLog>
+                    <div>
+                        <div class="pseudoLabel">
+                            <span>created</span>
+                            <strong>{{extraLog.created}}</strong>
+                        </div>
+                        <div class="pseudoLabel">
+                            <span>source</span>
+                            <strong>{{extraLog.source}}</strong>
+                        </div>
+                        <div class="pseudoLabel">
+                            <span>type</span>
+                            <strong>{{extraLog.type}}</strong>
+                        </div>
+                        <div class="pseudoLabel">
+                            <span>data</span>
+                            <strong>{{dump(extraLog.data)}}</strong>
+                        </div>
+                    </div>
+                </:foreach>
+            </section>
+        </:if>
     </div>
 </form>
