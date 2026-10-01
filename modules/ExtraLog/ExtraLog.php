@@ -1,4 +1,5 @@
 <?php
+
 namespace ExtraLog;
 
 use ExtraLog\Repository\ExtraLogRepository;
@@ -26,17 +27,17 @@ class ExtraLog extends \Core\BussinesLogic
     protected function filterData($data)
     {
         $ret = [];
-$ret['pageOpenIdentifier'] = empty($data->pageOpenIdentifier)?null:$data->pageOpenIdentifier;
-$ret['source'] = empty($data->source)?null:$data->source;
-$ret['type'] = empty($data->type)?null:$data->type;
-$ret['data'] = empty($data->data)?null:$data->data;
+        $ret['pageOpenIdentifier'] = empty($data->pageOpenIdentifier) ? null : $data->pageOpenIdentifier;
+        $ret['source'] = empty($data->source) ? null : $data->source;
+        $ret['type'] = empty($data->type) ? null : $data->type;
+        $ret['data'] = empty($data->data) ? null : json_encode($data->data);
         $ret['created'] = empty($data->created) ? null : $data->created;
         $ret['added'] = date('Y-m-d H:i:s');
 
         return $ret;
     }
 
-    public function insert($data):int
+    public function insert($data): int
     {
         $filtered = $this->filterData($data);
 
@@ -46,13 +47,15 @@ $ret['data'] = empty($data->data)?null:$data->data;
         \Core\WebSocket\Sender::sendToUsers(["ExtraLog", "ExtraLog", "Insert", $id]);
         return $id;
     }
+
     public function getAll()
     {
         return $this->defaultDB->getAll();
     }
 
-    public function getSelects(){
-        $ret=[];
+    public function getSelects()
+    {
+        $ret = [];
         return $ret;
     }
 }
