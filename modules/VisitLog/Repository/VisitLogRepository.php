@@ -30,7 +30,7 @@ class VisitLogRepository extends \Core\Repository
         $sqlParams = [];
         $filterSql = $this->generateColumnFilterSql($options->columnFilters, $this->datatableColumnMap(), $sqlParams);
         if ($options->mode == 'summary') {
-            $summary = DB::get("SELECT date(created) as date, count(*) as count FROM visit_log WHERE $filterSql GROUP BY date(created)", $sqlParams);
+            $summary = DB::get("SELECT date(created) as date, count(*) as count FROM visit_log WHERE $filterSql GROUP BY date(created )", $sqlParams);
             return ['summary' => $summary];
         } else {
             $start = (int)$options->start;

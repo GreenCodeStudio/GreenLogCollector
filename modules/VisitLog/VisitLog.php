@@ -46,6 +46,7 @@ class VisitLog extends \Core\BussinesLogic
 
         $projectId = (new ProjectRepository())->getIdByKey($data->projectKey ?? null);
         $filtered['project_id'] = $projectId;
+        $filtered['botProbability'] = $this->calcBotProbability($filtered);
         $id = $this->defaultDB->insert($filtered);
         \Core\WebSocket\Sender::sendToUsers(["VisitLog", "VisitLog", "Insert", $id]);
         return $id;
@@ -62,5 +63,19 @@ class VisitLog extends \Core\BussinesLogic
         $project = new Repository\projectRepository();
         $ret["project"] = $project->getSelect();
         return $ret;
+    }
+
+    public function calcBotProbability($filtered)
+    {
+        $botUAs = ['bot', 'claudebot', 'crawler', 'wp-safe-scanner', 'go-http-client', 'duckassistbot', 'baiduspider', 'crawl', 'hunyuan', 'spider', 'xAI-Grok', 'CensysInspect', 'forestengine.net', 'facebookexternalhit', 'Wget', 'GoogleOther'];
+        foreach ($botUAs as $botUA) {
+            if (stripos($filtered['userAgent'], $botUA) !== false) {
+                return 1.0;
+            }
+        }
+        if((new IpAnalizer())->isBot($filtered['ipAddress'])) {
+            return 1.0;
+        }
+        return 0.5; // Default probability
     }
 }

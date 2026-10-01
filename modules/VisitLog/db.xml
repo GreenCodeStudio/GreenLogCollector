@@ -58,6 +58,11 @@
             <type>varchar(32)</type>
             <null>YES</null>
         </column>
+        <column>
+            <name>botProbability</name>
+            <type>float</type>
+            <default>0.5</default>
+        </column>
         <index>
             <type>PRIMARY</type>
             <element>id</element>
