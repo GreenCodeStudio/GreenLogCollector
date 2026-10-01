@@ -2,55 +2,66 @@
 <root>
     <node name="VisitLog">
         <node name="VisitLog">
-            <value lang="en">VisitLog</value>
+            <value lang="en">Visit</value>
+            <value lang="pl">Wizyta</value>
         </node>
-        <node name="id">
-            <value lang="en">id</value>
-        </node>
-        <node name="project_id">
-            <value lang="en">project_id</value>
+        <node name="project">
+            <value lang="en">Project</value>
+            <value lang="pl">Projekt</value>
         </node>
         <node name="userIdentifier">
-            <value lang="en">userIdentifier</value>
+            <value lang="en">User Identifier</value>
+            <value lang="pl">Identyfikator użytkownika</value>
         </node>
         <node name="userAgent">
-            <value lang="en">userAgent</value>
+            <value lang="en">User Agent</value>
+            <value lang="pl">User Agent</value>
         </node>
         <node name="ipAddress">
-            <value lang="en">ipAddress</value>
+            <value lang="en">IP address</value>
+            <value lang="pl">Adres IP</value>
         </node>
         <node name="ipAddressIsBot">
-            <value lang="en">ipAddressIsBot</value>
+            <value lang="en">IP address is owned by known bot</value>
+            <value lang="pl">Adres IP należy do znanego bota</value>
         </node>
         <node name="ipAddressAbusive">
-            <value lang="en">ipAddressAbusive</value>
+            <value lang="en">Number of databases marking this IP as abusive</value>
+            <value lang="pl">Liczba baz danych oznaczających ten adres IP jako nadużycie</value>
         </node>
         <node name="sessionIdentifier">
-            <value lang="en">sessionIdentifier</value>
+            <value lang="en">Session identifier</value>
+            <value lang="pl">Identyfikator sesji</value>
         </node>
         <node name="pageOpenIdentifier">
-            <value lang="en">pageOpenIdentifier</value>
+            <value lang="en">Page open identifier</value>
+            <value lang="pl">Identyfikator otwarcia strony</value>
         </node>
         <node name="url">
-            <value lang="en">url</value>
+            <value lang="en">URL</value>
+            <value lang="pl">URL</value>
         </node>
         <node name="created">
-            <value lang="en">created</value>
+            <value lang="en">Created</value>
+            <value lang="pl">Utworzono</value>
         </node>
         <node name="added">
-            <value lang="en">added</value>
+            <value lang="en">Added</value>
+            <value lang="pl">Dodano</value>
         </node>
         <node name="type">
-            <value lang="en">type</value>
+            <value lang="en">Type</value>
+            <value lang="pl">Typ</value>
         </node>
         <node name="botProbability">
             <value lang="pl">Prawdopodobieństwo bota</value>
-            <value lang="en">bot probability</value>
+            <value lang="en">Bot probability</value>
         </node>
     </node>
     <node name="VisitLogList">
         <node name="header">
-            <value lang="en">List of elements of type VisitLog</value>
+            <value lang="en">Visit Log</value>
+            <value lang="pl">Log wizyt</value>
         </node>
     </node>
 </root>

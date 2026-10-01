@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<menu><group/><element><link>/VisitLog</link><title>VisitLog</title></element></menu>
+<menu>
+    <element>
+        <link>/VisitLog</link>
+        <title key="VisitLog.VisitLogList.header">VisitLog</title>
+    </element>
+</menu>

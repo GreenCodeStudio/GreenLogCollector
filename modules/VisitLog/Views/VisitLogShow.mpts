@@ -9,7 +9,7 @@
                 <h1>{{t("VisitLog.VisitLog.VisitLog")}}</h1>
             </header>
           <div class="pseudoLabel">
-            <span>{{t("VisitLog.VisitLog.project_id")}}:</span>
+            <span>{{t("VisitLog.VisitLog.project")}}:</span>
             <strong><a href=links.project_id >{{item.project_id}}</a></strong>
         </div>
             <div class="pseudoLabel">

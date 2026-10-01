@@ -15,17 +15,17 @@ export class index {
         objectsList.allowTableEdit = true;
         objectsList.columns = [];
         objectsList.columns.push({
-            name: t('VisitLog.project_id'),
-            dataName: 'project_id',
-            sortName: 'project_id',
+            name: t('VisitLog.added'),
+            dataName: 'added',
+            sortName: 'added',
             width: 100,
             widthGrow: 1,
             isFilter: true
         });
         objectsList.columns.push({
-            name: t('VisitLog.userIdentifier'),
-            dataName: 'userIdentifier',
-            sortName: 'userIdentifier',
+            name: t('VisitLog.project'),
+            dataName: 'project_id',
+            sortName: 'project_id',
             width: 100,
             widthGrow: 1,
             isFilter: true
@@ -47,33 +47,9 @@ export class index {
             isFilter: true
         });
         objectsList.columns.push({
-            name: t('VisitLog.sessionIdentifier'),
-            dataName: 'sessionIdentifier',
-            sortName: 'sessionIdentifier',
-            width: 100,
-            widthGrow: 1,
-            isFilter: true
-        });
-        objectsList.columns.push({
-            name: t('VisitLog.pageOpenIdentifier'),
-            dataName: 'pageOpenIdentifier',
-            sortName: 'pageOpenIdentifier',
-            width: 100,
-            widthGrow: 1,
-            isFilter: true
-        });
-        objectsList.columns.push({
             name: t('VisitLog.url'),
             dataName: 'url',
             sortName: 'url',
-            width: 100,
-            widthGrow: 1,
-            isFilter: true
-        });
-        objectsList.columns.push({
-            name: t('VisitLog.added'),
-            dataName: 'added',
-            sortName: 'added',
             width: 100,
             widthGrow: 1,
             isFilter: true
@@ -93,6 +69,30 @@ export class index {
             widthGrow: 1,
             content: x => Math.round(x.botProbability * 100) + '%'
         });
+        objectsList.columns.push({
+            name: t('VisitLog.userIdentifier'),
+            dataName: 'userIdentifier',
+            sortName: 'userIdentifier',
+            width: 100,
+            widthGrow: 1,
+            isFilter: true
+        });
+        objectsList.columns.push({
+            name: t('VisitLog.sessionIdentifier'),
+            dataName: 'sessionIdentifier',
+            sortName: 'sessionIdentifier',
+            width: 100,
+            widthGrow: 1,
+            isFilter: true
+        });
+        objectsList.columns.push({
+            name: t('VisitLog.pageOpenIdentifier'),
+            dataName: 'pageOpenIdentifier',
+            sortName: 'pageOpenIdentifier',
+            width: 100,
+            widthGrow: 1,
+            isFilter: true
+        });
         objectsList.generateActions = (rows, mode) => {
             let ret = [];
             if (rows.length == 1) {
@@ -108,6 +108,10 @@ export class index {
             }
             return ret;
         }
+        objectsList.hiddenColumns.add('userIdentifier')
+        objectsList.hiddenColumns.add('sessionIdentifier')
+        objectsList.hiddenColumns.add('pageOpenIdentifier')
+        objectsList.sort={col:'added', desc:true};
         container.append(objectsList);
         objectsList.paramsInUrl = true;
         objectsList.refresh();

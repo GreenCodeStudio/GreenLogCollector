@@ -14,7 +14,7 @@ class VisitLogController extends \Common\PageStandardController
     {
         $this->will('VisitLog', 'show');
         $this->addView('VisitLog', 'VisitLogList');
-        $this->pushBreadcrumb(['title' => 'VisitLog', 'url' => '/VisitLog']);
+        $this->pushBreadcrumb(['title' => t('VisitLog.VisitLogList.header'), 'url' => '/VisitLog']);
 
     }
 
@@ -30,7 +30,6 @@ class VisitLogController extends \Common\PageStandardController
             $data->ipAddressAbusive = (new IpAnalizer())->isAbusive($data->ipAddress);
         }
 
-        dump($data);
         $links = [
             'project_id' => '/VisitLog?columnFilters='.urlencode(json_encode([["project_id", ["type" => "equals", "value" => $data->project_id]]])),
             'userIdentifier' => '/VisitLog?columnFilters='.urlencode(json_encode([["userIdentifier", ["type" => "equals", "value" => $data->userIdentifier]]])),
@@ -41,7 +40,7 @@ class VisitLogController extends \Common\PageStandardController
             'url' => '/VisitLog?columnFilters='.urlencode(json_encode([["url", ["type" => "equals", "value" => $data->url]]])),
         ];
         $this->addView('VisitLog', 'VisitLogShow', ['item' => $data, 'links' => $links]);
-        $this->pushBreadcrumb(['title' => 'VisitLog', 'url' => '/VisitLog']);
-        $this->pushBreadcrumb(['title' => 'Szczegóły', 'url' => '/VisitLog/show/'.$id]);
+        $this->pushBreadcrumb(['title' =>  t('VisitLog.VisitLogList.header'), 'url' => '/VisitLog']);
+        $this->pushBreadcrumb(['title' =>  t('VisitLog.VisitLog.VisitLog'), 'url' => '/VisitLog/show/'.$id]);
     }
 }
