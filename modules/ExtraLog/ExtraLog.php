@@ -4,6 +4,7 @@ namespace ExtraLog;
 
 use ExtraLog\Repository\ExtraLogRepository;
 use Project\Repository\ProjectRepository;
+use VisitLog\Repository\VisitLogRepository;
 
 class ExtraLog extends \Core\BussinesLogic
 {
@@ -44,6 +45,10 @@ class ExtraLog extends \Core\BussinesLogic
         $projectId = (new ProjectRepository())->getIdByKey($data->projectKey ?? null);
         $filtered['project_id'] = $projectId;
         $id = $this->defaultDB->insert($filtered);
+
+        if($data->source == 'browser' && $data->type == 'jsInit' && !empty($data->pageOpenIdentifier)) {
+            (new VisitLogRepository())->reduceBotProbability($filtered['project_id'], $data->pageOpenIdentifier, 0.9);
+        }
         \Core\WebSocket\Sender::sendToUsers(["ExtraLog", "ExtraLog", "Insert", $id]);
         return $id;
     }
