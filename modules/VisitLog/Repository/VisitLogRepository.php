@@ -80,4 +80,12 @@ class VisitLogRepository extends \Core\Repository
     {
         DB::query("UPDATE visit_log SET botProbability = botProbability * :multiplier WHERE project_id = :project_id AND pageOpenIdentifier = :pageOpenIdentifier", ['multiplier' => $multiplier, 'project_id' => $project_id, 'pageOpenIdentifier' => $pageOpenIdentifier]);
     }
+
+    public function insertHeaders(array $headers)
+    {
+        DB::insert(
+            'visit_log_headers',
+            $headers
+        );
+    }
 }

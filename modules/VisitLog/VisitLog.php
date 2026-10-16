@@ -48,6 +48,13 @@ class VisitLog extends \Core\BussinesLogic
         $filtered['project_id'] = $projectId;
         $filtered['botProbability'] = $this->calcBotProbability($filtered);
         $id = $this->defaultDB->insert($filtered);
+        $headers=[];
+        foreach ($data->headers ?? [] as $headerName=>$headerValue) {
+            $headers[]=['visit_log_id'=>$id, 'name'=>$headerName, 'value'=>$headerValue];
+        }
+        if(!empty($headers)) {
+            $this->defaultDB->insertHeaders($headers);
+        }
         \Core\WebSocket\Sender::sendToUsers(["VisitLog", "VisitLog", "Insert", $id]);
         return $id;
     }

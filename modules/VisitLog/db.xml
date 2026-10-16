@@ -79,4 +79,34 @@
             </reference>
         </index>
     </table>
+    <table>
+        <name>visit_log_header</name>
+        <column>
+            <name>visit_log_id</name>
+            <type>int</type>
+            <null>NO</null>
+        </column>
+        <column>
+            <name>name</name>
+            <type>varchar(255)</type>
+            <null>NO</null>
+        </column>
+        <column>
+            <name>value</name>
+            <type>text</type>
+            <null>YES</null>
+        </column>
+        <index>
+            <type>PRIMARY</type>
+            <element>visit_log_id</element>
+            <element>name</element>
+        </index>
+        <index>
+            <type>FOREIGN</type>
+            <element>visit_log_id</element>
+            <reference name="visit_log">
+                <element>id</element>
+            </reference>
+        </index>
+    </table>
 </root>
