@@ -73,6 +73,7 @@ class VisitLogRepository extends \Core\Repository
         }else{
             $item->extraLogs=null;
         }
+        $item->headers = DB::get("SELECT * FROM visit_log_header WHERE visit_log_id = :visit_log_id", ['visit_log_id' => $id]);
         return $item;
     }
 

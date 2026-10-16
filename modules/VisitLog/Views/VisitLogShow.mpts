@@ -57,6 +57,16 @@
                 <strong>{{item.botProbability}}</strong>
             </div>
         </section>
+        <:if condition=item.headers >
+            <section class="card action-show" data-width="6">
+                <:foreach collection=item.headers item=header>
+                        <div class="pseudoLabel">
+                            <span>{{header.name}}</span>
+                            <strong>{{header.value}}</strong>
+                        </div>
+                </:foreach>
+            </section>
+        </:if>
         <:if condition=item.extraLogs >
             <section class="card action-show" data-width="6">
                 <:foreach collection=item.extraLogs item=extraLog>
