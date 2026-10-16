@@ -48,11 +48,11 @@ class VisitLog extends \Core\BussinesLogic
         $filtered['project_id'] = $projectId;
         $filtered['botProbability'] = $this->calcBotProbability($filtered);
         $id = $this->defaultDB->insert($filtered);
-        $headers=[];
-        foreach ($data->headers ?? [] as $headerName=>$headerValue) {
-            $headers[]=['visit_log_id'=>$id, 'name'=>$headerName, 'value'=>$headerValue];
+        $headers = [];
+        foreach ($data->headers ?? [] as $headerName => $headerValue) {
+            $headers[] = ['visit_log_id' => $id, 'name' => $headerName, 'value' => $headerValue];
         }
-        if(!empty($headers)) {
+        if (!empty($headers)) {
             $this->defaultDB->insertHeaders($headers);
         }
         \Core\WebSocket\Sender::sendToUsers(["VisitLog", "VisitLog", "Insert", $id]);
@@ -80,12 +80,12 @@ class VisitLog extends \Core\BussinesLogic
                 return 1.0;
             }
         }
-        if((new IpAnalizer())->isBot($filtered['ipAddress'])) {
+        if ((new IpAnalizer())->isBot($filtered['ipAddress'])) {
             return 1.0;
         }
-        $abusiveCount=(new IpAnalizer())->isAbusive($filtered['ipAddress']);
-        if($abusiveCount > 0) {
-            return 1 - (0.5/(1+$abusiveCount));
+        $abusiveCount = (new IpAnalizer())->isAbusive($filtered['ipAddress']);
+        if ($abusiveCount > 0) {
+            return 1 - (0.5 / (1 + $abusiveCount));
         }
         return 0.5; // Default probability
     }

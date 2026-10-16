@@ -83,8 +83,8 @@ class VisitLogRepository extends \Core\Repository
 
     public function insertHeaders(array $headers)
     {
-        DB::insert(
-            'visit_log_headers',
+        DB::insertMultiple(
+            'visit_log_header',
             $headers
         );
     }
