@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<menu><group/><element><link>/StatusPage</link><title>StatusPage</title></element></menu>
+<menu>
+    <element>
+        <link>/StatusPage</link>
+        <title>StatusPage</title>
+    </element>
+</menu>
