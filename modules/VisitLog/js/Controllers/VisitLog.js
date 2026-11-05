@@ -67,6 +67,7 @@ export class index {
             sortName: 'botProbability',
             width: 100,
             widthGrow: 1,
+            isFilter: true,
             content: x => Math.round(x.botProbability * 100) + '%'
         });
         objectsList.columns.push({
