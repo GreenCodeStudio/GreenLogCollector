@@ -13,6 +13,11 @@
             <type>text</type>
             <null>YES</null>
         </column>
+        <column>
+            <name>is_archived</name>
+            <type>tinyint</type>
+            <null>NO</null>
+        </column>
         <index>
             <type>PRIMARY</type>
             <element>id</element>
