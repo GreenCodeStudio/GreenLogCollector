@@ -89,4 +89,12 @@ class VisitLogRepository extends \Core\Repository
             $headers
         );
     }
+    public function getAutoHackingIpsFromLogs()
+    {
+        return DB::get("SELECT ipAddress
+from visit_log
+WHERE url like '%wp-admin%' OR url like '%.env%' OR url like '%.git/config%'OR url like '%.aws/credentials%'OR url like '%.gitlab-ci.yml%'
+group by ipAddress
+    having count(*) > 10");
+    }
 }
